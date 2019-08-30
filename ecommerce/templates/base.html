@@ -19,12 +19,11 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-right">
         <ul class="nav navbar-nav">
             {% if user.is_authenticated %}
             <li><a href="{% url 'feedback' %}">Feedback</a></li>
             <li><a href="{% url 'logout' %}">Logout</a></li>
-
             {% else %}
             <li><a href="{% url 'login' %}">Login</a></li>
             <li><a href="{% url 'registration' %}">Register</a></li>
