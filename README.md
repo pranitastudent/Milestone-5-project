@@ -41,7 +41,7 @@ The user must be able to filter the t-shirts accoding to the options of : men, w
 ## Technologies Used
 
 <p> The Full Stack Frameworks module requires a project to be built using: HTML, CSS, JavaScript, stripe payment system, Python and Django. The project will use the Postgres relational database and will use additional libraries. The project
-brief indicates to build an eccomerce site.</p>
+brief indicates to build an eccomerce site. CI tested through travis integration</p>
 
 ## Testing User Stories
 
