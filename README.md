@@ -49,4 +49,4 @@ brief indicates to build an eccomerce site. CI tested through travis integration
 
 ## Credits
 
-### Acknowledgements
+## Acknowledgements
