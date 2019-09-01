@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import env
 
 
 
@@ -22,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '1m*jupi3w40z*+1-k&b$v%_-22x!+tl-w%4yz!_3-=$@$mz^bc'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -135,21 +136,9 @@ MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 # EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 
-LOGIN_REDIRECT_URL = '/home/'
-
-LOGIN_URL = '/account/login/'
-
-LOGIN_EXEMPT_URLS = (
-    r'^account/logout/$',
-    r'^account/register/$',
-    r'^account/reset-password/$',
-    r'^account/reset-password/done/$',
-    r'^account/reset-password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',
-    r'^account/reset-password/complete/$',
-)
 
 EMAIL_HOST = 'localhost'
-EMAIL_PORT = 1025
+EMAIL_PORT = 587
 
 
 AUTHENTICATION_BACKENDS = [

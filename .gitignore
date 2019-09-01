@@ -1,5 +1,4 @@
 *.sqlite3
 *.c9/
 env.py
-.~c9
-__pycahce__/
+__pycache__/
