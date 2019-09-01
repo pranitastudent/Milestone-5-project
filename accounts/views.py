@@ -48,7 +48,7 @@ def login(request):
 
 # Registration View
     
-def registration(request):
+def register(request):
     """Render the registration page"""
     if request.user.is_authenticated:
         return redirect(reverse('index'))
