@@ -1,17 +1,14 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% load bootstrap_tags %} {% block page_title %} Login {% endblock %}
 
-{% block page_title %} Login {% endblock %}
+<main class="container form-container">
+    {% block content %} {% block heading %}
+    <h1 class="main-heading">Login</h1> {% endblock %}
+    <form method="POST">
+        {% csrf_token %} {{ login_form | as_bootstrap }}
+        <button type="button submit" class="btn btn-outline-primary">Login</button>
 
-<main class="container">
-{% block heading %}<h1>Login Page</h1>{% endblock %}
-
-{% block content %}
-<form method = "POST">
-        {% csrf_token %}
-        {{ login_form }}
-        <button type ="submit">Login</button> 
     </form>
-<p><a href = "{% url 'password_reset' %}">Reset Password</a></p>  
-
-{% endblock %}  
+    <br>
+    <p class="password">If you have forgotten your password please<a href="{% url 'password_reset' %}"> Reset Password</a></p>
+    {% endblock %}
 </main>

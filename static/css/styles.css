@@ -1,11 +1,32 @@
-form {
-    width: 50%;
-}
+@import url('https://fonts.googleapis.com/css?family=Manjari&display=swap');
+
+/*Body */
 
 body {
-    font-family: Arial;
+    font-family: 'Manjari', sans-serif;
     padding-top: 70px;
 }
+
+
+/*Form */
+
+form {
+    padding-top:60px;
+    width: 40%;
+    margin:auto;
+    letter-spacing: 2px;
+}
+
+
+#id_username,
+#id_password {
+    
+margin-bottom:50px; 
+width:70%;
+}
+
+
+/*Footer*/
 
 footer {
     margin-top: 40px;
@@ -15,6 +36,9 @@ footer {
     color: #A9A9A9;
 }
 
+
+
+
 .icon-bar {
     background-color: #fff;
 }
@@ -22,3 +46,21 @@ footer {
 .accountform {
     padding-top: 20px;
 }
+
+/*Headings*/
+
+.main-heading {
+    text-align:center;
+}
+
+.password {
+  text-align:center;
+}
+
+/*Buttons*/
+
+.btn-outline-primary{
+   background:#000;    
+   color:#fff;
+}
+
