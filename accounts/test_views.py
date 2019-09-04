@@ -52,7 +52,7 @@ class test_views(TestCase):
         self.assertRedirects(response, '/', status_code=302)
 
 
-    def test_user_feedback_page(self):
+    def test_feedback(self):
         url = self.client.get('/accounts/feedback/')
         self.assertEqual(url.status_code, 302)
         self.assertRedirects(url, '/accounts/login/?next=/accounts/feedback/', status_code=302)
