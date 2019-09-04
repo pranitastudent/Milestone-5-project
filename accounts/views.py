@@ -59,7 +59,8 @@ def login(request):
 def register(request):
     """Lets users register to site"""
     if request.user.is_authenticated:
-        messages.success(request, "You are already logged in")
+        messages.success(request, "You are already logged in", 
+                         extra_tags="alert-primary")
         return redirect(reverse('index'))
         
     if request.method == "POST":
@@ -73,18 +74,19 @@ def register(request):
             
             if user:
                 auth.login(user=user, request=request)
-                messages.success(request, "You have successfully registered!")
+                messages.success(request, "You have successfully registered!", 
+                                 extra_tags="alert-primary")
                 return redirect(reverse('index'))
             else:
                 messages.error(request, 
-                "Unable to register your account at this time!")
-                
-            
+                               "Unable to register your account at this time!",
+                               extra_tags="alert-danger")
+
     else:
         registration_form = UserRegistrationForm()
-    return render(request, 'register.html',
-    {'registration_form': registration_form})
-        
+    return render(request, 'register.html', {
+                  'registration_form': registration_form})
+                  
 # Feedback View
 
 def feedback(request):

@@ -8,3 +8,8 @@ urlpatterns = [
     url(r'^$', index, name="index"),
     url(r'^accounts/', include(accounts_urls))
 ]
+
+admin.site.site_header = "Pranita's T-shirt Shop"
+admin.site.site_title = "Admin Area"
+admin.site.index_title = "Welcome"
+
