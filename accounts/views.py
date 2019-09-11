@@ -1,11 +1,13 @@
 # Django Shortcuts
 
-from django.shortcuts import render, redirect, reverse 
+from django.shortcuts import render, redirect,get_object_or_404, reverse 
 from django.http import HttpResponseRedirect
 from django.contrib import auth, messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required 
 from accounts.forms import UserLoginForm,  UserRegistrationForm
+from .models import Feedback
+from .forms import FeedbackPostForm
 
 # Index View
 
@@ -86,10 +88,44 @@ def register(request):
         registration_form = UserRegistrationForm()
     return render(request, 'register.html', {
                   'registration_form': registration_form})
-                  
-# Feedback View
+
+# Feedback Form
+
+# Main Feedback Page
 
 def feedback(request):
-    """Renders Feedback Page - Only is user has bought Product"""
-    user = User.objects.get(email=request.user.email)
-    return render(request, 'feedback.html', {"feedback": user})        
+    """ Returns main feedback page"""
+    return render(request,  'feedback.html')
+
+# Save Feedback
+
+def feedback_detail(request, pk):
+    """
+    Create a view that returns a single
+    Post object based on the post ID (pk) and
+    render it to the 'postdetail.html' template.
+    Or return a 404 error if the post is
+    not found
+    """
+    post = get_object_or_404(Feedback, pk=pk)
+    post.views += 1
+    post.save()
+    return render(request, "feedbackdetail.html", {'post': post})
+
+# Create or Edit Feedback
+
+def create_or_edit_feedback(request, pk=None):
+    """
+    Create a view that allows us to create
+    or edit a post depending if the Post ID
+    is null or not
+    """
+    post = get_object_or_404(Feedback, pk=pk) if pk else None
+    if request.method == "POST":
+        form = FeedbackPostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            post = form.save()
+            return redirect(feedback_detail, post.pk)
+    else:
+        form = FeedbackPostForm(instance=post)
+    return render(request, 'feedbackform.html', {'form': form})

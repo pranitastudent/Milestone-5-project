@@ -1,61 +1,45 @@
 # Unit tests for account app
 
-from django.test import TestCase
+from django.test import TestCase, Client
 from django.contrib.auth.models import User
-from .forms import UserLoginForm, UserRegistrationForm
+from accounts.forms import UserRegistrationForm, UserLoginForm
 
 
-def setUp(self):
-    user = User.objects.create(username='test')
-    user.set_password('test_password')
-    user.save()
-
-
-class TestAccountsLoginForm(TestCase):
-
-    def test_login_form_valid_data(self):
-        user = {'username': 'test', 'password': 'test_password'}
-        form = UserLoginForm(data=user)
-        self.assertTrue(form.is_valid)
-
-
-    def test_login_form_invalid_data(self):
-        form = UserLoginForm(data={'username':'','password':''})
-        self.assertEqual(form.errors, {'username': ['This field is required.'],
-                                       'password': ['This field is required.']})
-
-
-class TestAccountsRegistrationForm(TestCase):
-
-    def test_successfull_register(self):
-        form = UserRegistrationForm({'username':"test",
-                                     "password1": "test_password",
-                                     "password2": "test_password",
-                                     "email": "test@test.com"})
+class TestUserRegistrationForm(TestCase):
+    def test_can_create_new_user(self):
+        form = UserRegistrationForm(
+                    {'username': 'Bob',
+                     'email': 'bob@newuser.com',
+                     'password1': 'mynewpassword',
+                     'password2': 'mynewpassword'}
+                    )
         self.assertTrue(form.is_valid())
 
-
-    def test_register_with_already_created_username(self):
-        setUp(self)
-        form = UserRegistrationForm({'username':"test",
-                                     "password1": "test_password",
-                                     "password2": "test_password",
-                                     "email": "test@test.com"})
+    def test_can_create_new_user_with_wrong_password_confirm(self):
+        form = UserRegistrationForm(
+            {'username': 'Bob',
+             'email': 'bob@newuser.com',
+             'password1': 'mynewpassword',
+             'password2': 'anothernewpassword'}
+            )
         self.assertFalse(form.is_valid())
-        self.assertEqual(form.errors['username'], ['A user with that username already exists.'])
+        self.assertEqual(form.errors['password2'], [u'Passwords do not match'])
 
 
-    def test_passwords_match(self):
-        form = UserRegistrationForm({'username': 'test',
-                                     'password1': 'test_password1',
-                                     'password2': 'test_password2'})
+class TestUserLoginForm(TestCase):
+    c = Client()
+
+    def test_user_can_login(self):
+        form = UserLoginForm(
+                    {'username': 'Bob',
+                     'password': 'mynewpassword'}
+                    )
+        self.assertTrue(form.is_valid())
+
+    def test_user_can_login_without_password(self):
+        form = UserLoginForm(
+            {'username': 'test_user',
+             'password': ''}
+            )
         self.assertFalse(form.is_valid())
-        self.assertEqual(form.errors, {'password2': ['Passwords must match!']})
-
-
-    def test_required_fields(self):
-        form = UserRegistrationForm({})
-        self.assertFalse(form.is_valid())
-        self.assertEqual(form.errors, {'username': ['This field is required.'],
-                                       'password1': ['This field is required.'],
-                                       'password2': ['This field is required.']})
+        self.assertEqual(form.errors['password'], [u'This field is required.'])
