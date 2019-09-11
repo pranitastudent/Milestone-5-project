@@ -107,10 +107,11 @@ def feedback_detail(request, pk):
     Or return a 404 error if the post is
     not found
     """
-    post = get_object_or_404(Feedback, pk=pk)
-    post.views += 1
-    post.save()
-    return render(request, "feedbackdetail.html", {'post': post})
+    feedback = get_object_or_404(Feedback, pk=pk)
+    feedback.views += 1
+    feedback.save()
+    return render(request, "postdetail.html", {'feedback': feedback})
+
 
 # Create or Edit Feedback
 
