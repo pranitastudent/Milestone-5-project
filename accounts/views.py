@@ -109,7 +109,7 @@ def feedback_detail(request, pk):
     """
     feedback = get_object_or_404(Feedback, pk=pk)
     feedback.views += 1
-    feedback.save()
+    feedback.save(commit=False)
     return render(request, "postdetail.html", {'feedback': feedback})
 
 

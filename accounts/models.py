@@ -11,5 +11,5 @@ class Feedback(models.Model):
     published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
     views = models.IntegerField(default=0)
   
-    def __unicode__(self):
-        return self.title
+    def __str__(self):
+        return self.product_title
