@@ -12,4 +12,4 @@ class Feedback(models.Model):
     views = models.IntegerField(default=0)
   
     def __str__(self):
-        return self.product_title
+        return 'feedback.html'
