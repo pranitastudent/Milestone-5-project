@@ -6,6 +6,7 @@ from django.contrib import auth, messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required 
 from accounts.forms import UserLoginForm,  UserRegistrationForm, ContactForm
+from django.core.mail import EmailMessage
 from django.template.loader import get_template
 
 
@@ -100,5 +101,33 @@ def Contact(request):
             contact_name = request.POST.get('contact_name')
             contact_email = request.POST.get('contact_email')
             contact_content = request.POST.get('content')
+
+            template = get_template('blog/contact_form.txt')
+            context = {
+                'contact_name' : contact_name,
+                'contact_email' : contact_email,
+                'contact_content' : contact_content,
+            }
             
-        template = get_template('accounts/templates/contact_form')    
+            content = template.render(context)
+            
+            
+            
+        
+        
+        email = EmailMessage(
+            "New contact form email",
+            content,
+            "Pranita's T-shirt Shop" + '',
+            ['pranitacoder12@gmail.com'],
+            headers = { 'Reply To': contact_email }
+            
+        )
+            
+        email.send()
+            
+        return redirect('success.html')
+    return render(request, 'accounts/contact.html', {'form':Contact_Form })    
+        
+
+    

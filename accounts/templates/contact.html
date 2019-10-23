@@ -1,0 +1,18 @@
+{% extends 'base.html %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Contact Us</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type= "submit">Submit</button>
+            </form>
+        </div>
+     </div>
+</div>
+
+{% end block %}
