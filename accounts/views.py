@@ -1,13 +1,13 @@
 # Django Shortcuts
 
-from django.shortcuts import render, redirect,get_object_or_404, reverse 
+from django.shortcuts import render, redirect,get_object_or_404, reverse
 from django.http import HttpResponseRedirect
 from django.contrib import auth, messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required 
-from accounts.forms import UserLoginForm,  UserRegistrationForm
-from .models import Feedback
-from .forms import FeedbackPostForm
+from accounts.forms import UserLoginForm,  UserRegistrationForm, ContactForm
+from django.template.loader import get_template
+
 
 # Index View
 
@@ -89,31 +89,16 @@ def register(request):
     return render(request, 'register.html', {
                   'registration_form': registration_form})
 
-# Feedback Form
+# Contact Form- Code adapted from (Django-2.2 Part-7 Django Contact Form with SMTP Email Backed Tutorial | By Creative web) 
 
-# Main Feedback Page
-
-def feedback(request):
-    """ Returns main feedback page"""
-    return render(request,  'feedback.html')
-
-# Save Feedback
-
-
-# Create or Edit Feedback
-
-def create_or_edit_feedback(request, pk=None):
-    """
-    Create a view that allows us to create
-    or edit a post depending if the Post ID
-    is null or not
-    """
-    
-    if request.method == "POST":
-        form = FeedbackPostForm(request.POST, request.FILES, instance=post)
+def Contact(request):
+    Contact_Form = ContactForm
+    if request.method == 'POST':
+        form = Contact_Form(data=request.POST) 
+        
         if form.is_valid():
-            post = form.save()
-            return redirect(feedback, post.pk)
-    else:
-        form = FeedbackPostForm(instance=post)
-    return render(request, 'feedbackform.html', {'form': form})
+            contact_name = request.POST.get('contact_name')
+            contact_email = request.POST.get('contact_email')
+            contact_content = request.POST.get('content')
+            
+        template = get_template('accounts/templates/contact_form')    

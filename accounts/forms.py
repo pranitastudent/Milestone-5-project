@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
-from .models import Feedback
+
 
 class UserLoginForm(forms.Form):
     """Form for login page"""
@@ -40,9 +40,11 @@ class UserRegistrationForm(UserCreationForm):
             
         return password2
         
-# Feedback Form
+# Contact Form- Code adapted from (Django-2.2 Part-7 Django Contact Form with SMTP Email Backed Tutorial | By Creative web) 
 
-class FeedbackPostForm(forms.ModelForm):
-      class Meta:
-        model = Feedback
-        fields = ('product_title', 'feedback', 'published_date')
+class ContactForm(forms.Form):
+    contact_name = forms.CharField(required=True)
+    contact_email = forms.EmailField(required=True)
+    content = forms.CharField(required = True)
+
+
