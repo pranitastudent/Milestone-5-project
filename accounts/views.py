@@ -102,7 +102,7 @@ def Contact(request):
             contact_email = request.POST.get('contact_email')
             contact_content = request.POST.get('content')
 
-            template = get_template('blog/contact_form.txt')
+            template = get_template('contact_form.txt')
             context = {
                 'contact_name' : contact_name,
                 'contact_email' : contact_email,
@@ -110,10 +110,6 @@ def Contact(request):
             }
             
             content = template.render(context)
-            
-            
-            
-        
         
         email = EmailMessage(
             "New contact form email",
@@ -126,8 +122,8 @@ def Contact(request):
             
         email.send()
             
-        return redirect('success.html')
-    return render(request, 'accounts/contact.html', {'form':Contact_Form })    
+        return redirect('templates/success.html')
+    return render(request, 'contact.html', {'form':Contact_Form })    
         
 
     

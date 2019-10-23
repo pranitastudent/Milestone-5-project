@@ -15,7 +15,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index, name="index"),
     url(r'^accounts/', include(accounts_urls)),
-    url(r'^$,', RedirectView.as_view(url='feedback/')),
     url(r'^media/(?P<path>.*)$', serve, {'document_root':MEDIA_ROOT}),
 ]
 

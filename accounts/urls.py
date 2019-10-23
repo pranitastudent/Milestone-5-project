@@ -1,6 +1,7 @@
 from django.conf.urls import url, include
-from accounts.views import logout, login, register
+from accounts.views import logout, login, register, Contact
 from accounts import url_reset
+
 
 
 urlpatterns = [
@@ -8,4 +9,7 @@ urlpatterns = [
     url(r'^logout/$', logout, name='logout'),
     url(r'^login/$', login, name='login'),
     url(r'^password-reset/', include(url_reset)),
+    url(r'^contact/$', Contact, name='contact'),
+  
+    
 ]
