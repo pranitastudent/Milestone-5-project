@@ -5,7 +5,7 @@ from django.views.generic import RedirectView
 from django.views.static import serve
 from django.contrib import admin
 from .settings import MEDIA_ROOT
-from accounts.views import index
+from accounts.views import index, Feedback
 from accounts import urls as accounts_urls
 
 
@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^$', index, name="index"),
     url(r'^accounts/', include(accounts_urls)),
     url(r'^media/(?P<path>.*)$', serve, {'document_root':MEDIA_ROOT}),
+    url(r'^feedback/$', Feedback, name='post'),
 ]
 
 admin.site.site_header = "Pranita's T-shirt Shop"

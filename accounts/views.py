@@ -1,6 +1,6 @@
 # Django Shortcuts
 
-from django.shortcuts import render, redirect,get_object_or_404, reverse
+from django.shortcuts import render, redirect,get_object_or_404, reverse, render_to_response 
 from django.http import HttpResponseRedirect
 from django.contrib import auth, messages
 from django.contrib.auth.models import User
@@ -8,6 +8,8 @@ from django.contrib.auth.decorators import login_required
 from accounts.forms import UserLoginForm,  UserRegistrationForm, ContactForm
 from django.core.mail import EmailMessage
 from django.template.loader import get_template
+from .models import feedback_new
+
 
 
 # Index View
@@ -122,8 +124,12 @@ def Contact(request):
             
         email.send()
             
-        return redirect('templates/success.html')
-    return render(request, 'contact.html', {'form':Contact_Form })    
-        
-
+        return render_to_response('success.html')
+    return render(request, 'contact.html', {'form':Contact_Form })   
     
+# Feedback
+
+def Feedback(request):
+    
+    posts = feedback_new.objects.all()
+    return render(request, 'feedback.html',{'post': posts})
