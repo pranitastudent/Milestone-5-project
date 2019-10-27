@@ -130,7 +130,7 @@ def Contact(request):
         return render_to_response('success.html')
     return render(request, 'contact.html', {'form':Contact_Form })   
     
-# Feedback
+# Feedback Form
 
 
 def Feedback(request):
@@ -160,7 +160,15 @@ def create_or_edit_post(request, pk=None):
     """
     The user which created the post can edit or delete it.
     """
-    post = get_object_or_404(feedback_new, pk=pk)
+    post = get_object_or_404(feedback_new, pk=pk)if pk else None
+    if request.method == "POST":
+        form = FeedbackForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            post= form.save()
+            return redirect(Feedback_detail, post.pk)
+    else:
+        form = FeedbackForm(instance = post)
+    return render(request, 'feedbackform.html', {'form':form})    
     
     
     

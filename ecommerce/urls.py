@@ -17,6 +17,7 @@ urlpatterns = [
     url(r'^accounts/', include(accounts_urls)),
     url(r'^media/(?P<path>.*)$', serve, {'document_root':MEDIA_ROOT}),
     url(r'^feedback/$', Feedback, name='post'),
+    
 ]
 
 admin.site.site_header = "Pranita's T-shirt Shop"

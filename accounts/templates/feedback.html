@@ -1,15 +1,13 @@
-{% extends 'base.html' %}
-{% block content %}
-{% for data in post %}
+{% extends 'base.html' %} {% block content %} {% for post in posts %}
 
-<h1>{{data.Title}}</h1>
-<span>{{data.created_date}}</span>
-<p>{{data.feedback}}</p>
-<span>{{data.Score}}</span>
+<div class="row">
+  <div class="col-md-2 col-sm-3 text-center">
+    <h1>{{post.Title}}</h1>
+    <span>{{post.created_date}}</span>
+    <p>{{post.feedback}}</p>
+    <span>{{post.Score}}</span>
+    <a href = "{% url 'Feedback_detail' %}"></a>
+  </div>
+</div>
 
-  <h3>Add Feedback</h3>
-  <button type="submit">Submit</button>
-
- 
-{% endfor %} 
-{% endblock %}
+{% endfor %} {% endblock %}

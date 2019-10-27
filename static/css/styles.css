@@ -29,15 +29,13 @@ width:70%;
 
 /*Footer*/
 
-footer {
+.main-footer {
     margin-top: 40px;
     padding-top: 20px;
     padding-bottom: 20px;
     border-top: 1px solid #ededed;
     color: #A9A9A9;
 }
-
-
 
 
 .icon-bar {

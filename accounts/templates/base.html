@@ -33,15 +33,17 @@
             
             <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                 
+                
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'logout' %}">Logout</a></li>
-                <li><a href="{% url 'post' %}">Feedback</a></li>
+                <li><a href="{% url 'new_post' %}">Add Feedback</a></li>
                 {% else %}
                 <li><a href="{% url 'login' %}">Login</a></li>
                 <li><a href="{% url 'register' %}">Register</a></li>
                 {% endif %}
+                <li><a href="{% url 'post' %}">Feedback</a></li> 
                 <li><a href="{% url 'contact' %}">Contact</a></li>
+                
             </ul>
           </div>    
     </nav>
@@ -52,6 +54,10 @@
         {% for message in messages %} {{ message }} {% endfor %}
     </div>
     {% endif %} {% block content %}{% endblock %}
+    
+    <footer class ="main-footer">
+        
+    </footer>
 
 
     <!-- Bootstrap CDN -->
