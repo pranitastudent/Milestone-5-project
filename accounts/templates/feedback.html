@@ -1,4 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
-   <h1>Hello!</h1>
+{% for data in post %}
+
+<h1>{{data.Title}}</h1>
+<span>{{data.created_date}}</span>
+<p>{{data.feedback}}</p>
+<span>{{data.Score}}</span>
+
+  <h3>Add Feedback</h3>
+  <button type="submit">Submit</button>
+
+ 
+{% endfor %} 
 {% endblock %}

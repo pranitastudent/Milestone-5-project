@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
+from .models import feedback_new
 
 
 class UserLoginForm(forms.Form):
@@ -46,5 +47,15 @@ class ContactForm(forms.Form):
     contact_name = forms.CharField(required=True)
     contact_email = forms.EmailField(required=True)
     content = forms.CharField(required = True)
+    
+
+class FeedbackForm(forms.ModelForm):
+    class Meta:
+        model = feedback_new
+        fields = ('Title', 'feedback', 'Score')
+            
+    
+
+
 
 

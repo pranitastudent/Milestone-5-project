@@ -1,6 +1,7 @@
 # Django Shortcuts
 
 from django.shortcuts import render, redirect,get_object_or_404, reverse, render_to_response 
+from django.utils import timezone
 from django.http import HttpResponseRedirect
 from django.contrib import auth, messages
 from django.contrib.auth.models import User
@@ -9,6 +10,8 @@ from accounts.forms import UserLoginForm,  UserRegistrationForm, ContactForm
 from django.core.mail import EmailMessage
 from django.template.loader import get_template
 from .models import feedback_new
+import datetime
+from .forms import FeedbackForm
 
 
 
@@ -129,7 +132,22 @@ def Contact(request):
     
 # Feedback
 
+
 def Feedback(request):
+    """
+    Create a list of all feedback that was published
+    until now abd render to template called feedback.html
+    """
     
     posts = feedback_new.objects.all()
     return render(request, 'feedback.html',{'post': posts})
+    
+def Feedback_detail(request, pk):
+    """
+    
+    Create a view that returns a single feedback published only by
+    the user based on post ID.
+    """
+    
+    
+    
