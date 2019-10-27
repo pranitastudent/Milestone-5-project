@@ -146,8 +146,21 @@ def Feedback_detail(request, pk):
     """
     
     Create a view that returns a single feedback published only by
-    the user based on post ID.
+    the user based on post ID render to feedback.html or return 404.
     """
+    
+    post = get_object_or_404(feedback_new)
+    post.views += 1
+    return render(request, 'feedbackdetail.html',{'post': post})
+    
+    
+    
+    
+def create_or_edit_post(request, pk=None):
+    """
+    The user which created the post can edit or delete it.
+    """
+    post = get_object_or_404(feedback_new, pk=pk)
     
     
     
