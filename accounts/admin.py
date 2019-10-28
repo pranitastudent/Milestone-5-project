@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import feedback_new
+from .models import Post
 
-admin.site.register(feedback_new)
+admin.site.register(Post)

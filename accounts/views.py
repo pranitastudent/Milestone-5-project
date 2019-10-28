@@ -6,11 +6,12 @@ from django.http import HttpResponseRedirect
 from django.contrib import auth, messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required 
-from accounts.forms import UserLoginForm,  UserRegistrationForm, ContactForm
+from .forms import UserLoginForm,  UserRegistrationForm, ContactForm, FeedbackForm
 from django.core.mail import EmailMessage
 from django.template.loader import get_template
 import datetime
-from .forms import feedback_new
+from .models import Post
+
 
 
 
@@ -131,17 +132,43 @@ def Contact(request):
     
 # Feedback Form
 
-
-def Feedback(request):
+def get_posts(request):
     """
-    Create a list of all feedback that was published
-    until now abd render to template called feedback.html
+    Create a view that will return a list
+    of Posts that were published prior to 'now'
+    and render them to the 'blogposts.html' template
     """
-    
-    posts = feedback_new.objects.all()
-    return render(request, 'feedback.html',{'post': posts})
+    posts = Post.objects.filter(published_date__lte=timezone.now()
+        ).order_by('-published_date')
+    return render(request, "feedback.html", {'posts': posts})
 
-def Feedback_new(request):
-    form = feedback_new()
-    return render(request, 'feedbackform.html',{'form':form} )
-    
+
+def post_detail(request, pk):
+    """
+    Create a view that returns a single
+    Post object based on the post ID (pk) and
+    render it to the 'postdetail.html' template.
+    Or return a 404 error if the post is
+    not found
+    """
+    post = get_object_or_404(Post, pk=pk)
+    post.views += 1
+    post.save()
+    return render(request, "feedbackdetail.html", {'post': post})
+
+
+def create_or_edit_post(request, pk=None):
+    """
+    Create a view that allows us to create
+    or edit a post depending if the Post ID
+    is null or not
+    """
+    post = get_object_or_404(Post, pk=pk) if pk else None
+    if request.method == "POST":
+        form = FeedbackForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            post = form.save()
+            return redirect(post_detail, post.pk)
+    else:
+        form = FeedbackForm(instance=post)
+    return render(request, 'feedbackform.html', {'form': form})

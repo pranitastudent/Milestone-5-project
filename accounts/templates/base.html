@@ -36,13 +36,13 @@
                 
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'logout' %}">Logout</a></li>
-                <li><a href="{% url 'feedback_new'}">Add Feedback</a></li>
+                <li><a href="{% url 'new_post' %}">Add Feedback</a></li>
                 {% else %}
                 <li><a href="{% url 'login' %}">Login</a></li>
                 <li><a href="{% url 'register' %}">Register</a></li>
                 {% endif %}
-                <li><a href="{% url 'post' %}">Feedback</a></li> 
                 <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="{% url 'get_posts' %}">Feedback</a></li>
                 
             </ul>
           </div>    

@@ -2,7 +2,8 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
-from .models import feedback_new
+from .models import Post
+
 
 
 class UserLoginForm(forms.Form):
@@ -50,12 +51,7 @@ class ContactForm(forms.Form):
     
 
 class FeedbackForm(forms.ModelForm):
+
     class Meta:
-        model = feedback_new
-        fields = ('Title', 'feedback', 'Score')
-            
-    
-
-
-
-
+        model = Post
+        fields = ('title', 'feedback', 'rating')
