@@ -132,22 +132,25 @@ def Contact(request):
     
 # Feedback Form
 
+# View All Feedback - even if not own
+
 def get_posts(request):
     """
     Create a view that will return a list
     of Posts that were published prior to 'now'
-    and render them to the 'blogposts.html' template
+    and render them to the 'feedback.html' template
     """
     posts = Post.objects.filter(published_date__lte=timezone.now()
         ).order_by('-published_date')
     return render(request, "feedback.html", {'posts': posts})
 
+# View Own Feedback and decide to post
 
 def post_detail(request, pk):
     """
     Create a view that returns a single
     Post object based on the post ID (pk) and
-    render it to the 'postdetail.html' template.
+    render it to the 'feedbackdetail.html' template.
     Or return a 404 error if the post is
     not found
     """
@@ -156,6 +159,7 @@ def post_detail(request, pk):
     post.save()
     return render(request, "feedbackdetail.html", {'post': post})
 
+# Add Feedback to the database and view
 
 def create_or_edit_post(request, pk=None):
     """
@@ -172,3 +176,27 @@ def create_or_edit_post(request, pk=None):
     else:
         form = FeedbackForm(instance=post)
     return render(request, 'feedbackform.html', {'form': form})
+
+# Update Feedback
+    
+def post_update(request, pk):
+    post=Post.objects.get(pk=pk)
+    form = FeedbackForm(request.POST or None, instance=post)
+    
+    if form.is_valid():
+        form.save()
+        return redirect('post_detail')
+    return render(request, 'feedbackdetail.html', {'form': form, 'post':post})    
+
+
+# Delete Feedback
+
+def post_delete(request, pk):
+    post=Post.objects.get(pk=pk)
+    
+    if request.method == 'POST':
+        post.delete()
+        return redirect('post_detail')
+    return render(request, 'deletedfeedback.html', {'post':post})
+    
+    
