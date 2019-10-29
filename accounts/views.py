@@ -146,6 +146,7 @@ def get_posts(request):
 
 # View Own Feedback and decide to post
 
+@login_required
 def post_detail(request, pk):
     """
     Create a view that returns a single
@@ -155,12 +156,15 @@ def post_detail(request, pk):
     not found
     """
     post = get_object_or_404(Post, pk=pk)
-    post.views += 1
-    post.save()
+
+    if request.user == post.user:
+       post.views += 1
+       post.save()
     return render(request, "feedbackdetail.html", {'post': post})
 
 # Add Creating and Editing/Deleting Feedback
 
+@login_required
 def create_or_edit_post(request, pk=None):
     """
     Create a view that allows us to create
@@ -168,9 +172,10 @@ def create_or_edit_post(request, pk=None):
     is null or not
     """
     post = get_object_or_404(Post, pk=pk) if pk else None
-    if request.method == "POST":
-        form = FeedbackForm(request.POST, request.FILES, instance=post)
-        if form.is_valid():
+    if request.user == post.user:  
+       if request.method == "POST":
+          form = FeedbackForm(request.POST, request.FILES, instance=post)
+       if form.is_valid():
             post = form.save()
             return redirect(post_detail, post.pk)
     else:
@@ -182,14 +187,16 @@ def create_or_edit_post(request, pk=None):
 
 # Code for delete_post adapted from Try Django 1.9 - 23 of 38 - Delete View - website in references
 
+@login_required
 def delete_post(request, pk=None):
     
     """
     Create a view that allows the selected user to delete a post_detail
     """
     instance = get_object_or_404(Post, pk=pk)
-    instance.delete()
-    messages.success(request, "Succesfully Deleted")
+
+    if request.user == instance.user:
+       instance.delete()
     return redirect("get_posts")
     
 

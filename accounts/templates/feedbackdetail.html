@@ -11,6 +11,7 @@
                     <p>{{ post.content }}</p>
                     <p><span class="boldtext">Published on:</span> {{ post.published_date }} </p>
                     <p><span class="boldtext">Views:</span> {{post.views}}</p>
+                    <p> Please rate the product 1-5 (Poor - Excellent) : <span class="boldtext">Rating:</span> {{post.rating }}</p>
                     <a href="{% url 'get_posts' %}" class="btn btn-default">Back to Feedback</a>
                     <hr>
                 </div>

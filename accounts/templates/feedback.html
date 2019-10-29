@@ -13,6 +13,8 @@
                         <p><a href="{% url 'post_detail' post.id %}"  class="btn btn-default">Read more</a></p>
                         <p><span class="boldtext">Published on:</span> {{ post.published_date }} </p>
                         <p><span class="boldtext">Views:</span> {{post.views}}</p>
+                        <p>Please rate the product 1-5 (Poor - Excellent)<span class="boldtext">Rating:</span> {{post.rating}}</p>
+                        
                       <a href="{% url 'edit_post' post.id %}" class="btn btn-default"><span>Edit</span></a>
                       <a href="{% url 'delete_post' post.id %}" class="btn btn-default"><span>Delete</span></a>
                     </div>
