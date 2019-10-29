@@ -13,8 +13,8 @@
                         <p><a href="{% url 'post_detail' post.id %}"  class="btn btn-default">Read more</a></p>
                         <p><span class="boldtext">Published on:</span> {{ post.published_date }} </p>
                         <p><span class="boldtext">Views:</span> {{post.views}}</p>
-                      <a href="{% url 'edit_post' post.id %}" class="btn btn-default">Edit</a>
-                      <a href="{% url 'delete_post' post.id %}" class="btn btn-default">Delete</a>
+                      <a href="{% url 'edit_post' post.id %}" class="btn btn-default"><span>Edit</span></a>
+                      <a href="{% url 'delete_post' post.id %}" class="btn btn-default"><span>Delete</span></a>
                     </div>
                 </div>
             </div>

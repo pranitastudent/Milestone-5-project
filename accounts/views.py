@@ -179,19 +179,18 @@ def create_or_edit_post(request, pk=None):
     
 # Delete Function
 
+
+# Code for delete_post adapted from Try Django 1.9 - 23 of 38 - Delete View - website in references
+
 def delete_post(request, pk=None):
     
     """
     Create a view that allows the selected user to delete a post_detail
     """
+    instance = get_object_or_404(Post, pk=pk)
+    instance.delete()
+    messages.success(request, "Succesfully Deleted")
+    return redirect("get_posts")
     
-    post = get_object_or_404(Post, pk=pk) if pk else None
-    if request.method == "POST":
-        form = FeedbackForm(request.POST, request.FILES, instance= post)
-        if form.is_valid():
-            post=form.delete()
-            return redirect('feedbackdetails.html', post.pk)
-    else:
-        form = FeedbackForm(instance=post)
-    return render(request, 'feedbackform.html', {'form': form})        
+
             
