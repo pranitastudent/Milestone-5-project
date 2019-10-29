@@ -50,3 +50,5 @@ brief indicates to build an eccomerce site. CI tested through travis integration
 ## Credits
 
 ## Acknowledgements
+
+https://stackoverflow.com/questions/35051466/django-how-can-i-delete-an-article-that-belongs-to-a-certain-user-only
