@@ -1,5 +1,5 @@
 from django.conf.urls import url, include
-from accounts.views import logout, login, register, Contact, get_posts, post_detail, create_or_edit_post, post_update,post_delete
+from accounts.views import logout, login, register, Contact, get_posts, post_detail, create_or_edit_post, delete_post
 from accounts import url_reset
 
 
@@ -14,8 +14,6 @@ urlpatterns = [
     url(r'^$', get_posts, name='get_posts'),
     url(r'^(?P<pk>\d+)/$', post_detail, name='post_detail'),
     url(r'^new/$', create_or_edit_post, name='new_post'),
-    url(r'^(?P<pk>\d+)/$', post_update, name='post_update'),
-    url(r'^(?P<pk>\d+)/$', post_delete, name='post_delete'),
-    
-    
-]
+    url(r'^(?P<pk>\d+)/edit/$', create_or_edit_post, name='edit_post'),
+    url(r'^(?P<pk>\d+)/edit/$', delete_post, name='delete_post')
+  ]

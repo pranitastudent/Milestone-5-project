@@ -130,7 +130,7 @@ def Contact(request):
         return render_to_response('success.html')
     return render(request, 'contact.html', {'form':Contact_Form })   
     
-# Feedback Form
+# Feedback Form - The code below is adapated from the Code Institute Lectures on Blog Post
 
 # View All Feedback - even if not own
 
@@ -159,12 +159,12 @@ def post_detail(request, pk):
     post.save()
     return render(request, "feedbackdetail.html", {'post': post})
 
-# Add Feedback to the database and view
+# Add Creating and Editing/Deleting Feedback
 
 def create_or_edit_post(request, pk=None):
     """
     Create a view that allows us to create
-    or edit a post depending if the Post ID
+    or edit a feedback post depending if the Post ID
     is null or not
     """
     post = get_object_or_404(Post, pk=pk) if pk else None
@@ -176,27 +176,22 @@ def create_or_edit_post(request, pk=None):
     else:
         form = FeedbackForm(instance=post)
     return render(request, 'feedbackform.html', {'form': form})
+    
+# Delete Function
 
-# Update Feedback
+def delete_post(request, pk=None):
     
-def post_update(request, pk):
-    post=Post.objects.get(pk=pk)
-    form = FeedbackForm(request.POST or None, instance=post)
+    """
+    Create a view that allows the selected user to delete a post_detail
+    """
     
-    if form.is_valid():
-        form.save()
-        return redirect('post_detail')
-    return render(request, 'feedbackdetail.html', {'form': form, 'post':post})    
-
-
-# Delete Feedback
-
-def post_delete(request, pk):
-    post=Post.objects.get(pk=pk)
-    
-    if request.method == 'POST':
-        post.delete()
-        return redirect('post_detail')
-    return render(request, 'deletedfeedback.html', {'post':post})
-    
-    
+    post = get_object_or_404(Post, pk=pk) if pk else None
+    if request.method == "POST":
+        form = FeedbackForm(request.POST, request.FILES, instance= post)
+        if form.is_valid():
+            post=form.delete()
+            return redirect('feedbackdetails.html', post.pk)
+    else:
+        form = FeedbackForm(instance=post)
+    return render(request, 'feedbackform.html', {'form': form})        
+            
