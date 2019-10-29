@@ -157,7 +157,7 @@ def post_detail(request, pk):
     """
     post = get_object_or_404(Post, pk=pk)
 
-    if request.user == post.user:
+    if post.user == request.user:
        post.views += 1
        post.save()
     return render(request, "feedbackdetail.html", {'post': post})
@@ -172,7 +172,7 @@ def create_or_edit_post(request, pk=None):
     is null or not
     """
     post = get_object_or_404(Post, pk=pk) if pk else None
-    if request.user == post.user:  
+    if post.user == request.user:  
        if request.method == "POST":
           form = FeedbackForm(request.POST, request.FILES, instance=post)
        if form.is_valid():
@@ -193,10 +193,10 @@ def delete_post(request, pk=None):
     """
     Create a view that allows the selected user to delete a post_detail
     """
-    instance = get_object_or_404(Post, pk=pk)
+    post = get_object_or_404(Post, pk=pk)
 
-    if request.user == instance.user:
-       instance.delete()
+    if post.user == request.user:
+       post.delete()
     return redirect("get_posts")
     
 
