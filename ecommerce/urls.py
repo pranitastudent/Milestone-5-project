@@ -5,7 +5,6 @@ from django.views.generic import RedirectView
 from django.views.static import serve
 from django.contrib import admin
 from .settings import MEDIA_ROOT
-from accounts.views import index
 from accounts import urls as urls_accounts
 from products import urls as urls_products
 from products.views import all_products

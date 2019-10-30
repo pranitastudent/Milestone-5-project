@@ -13,15 +13,6 @@ import datetime
 from .models import Post
 
 
-
-
-# Index View
-
-def index(request):
-    """Return the index.html file"""
-    return render(request,  'index.html')
-
-
 # Logout View
 
 def logout(request):
