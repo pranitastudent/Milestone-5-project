@@ -36,7 +36,7 @@ ALLOWED_HOSTS = ['b477ad04a80c44a6ab37b07c2a4959f1.vfs.cloud9.us-east-1.amazonaw
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+   'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'django_forms_bootstrap',
     'accounts',
     'products',
-    'cart',
   
 ]
 
