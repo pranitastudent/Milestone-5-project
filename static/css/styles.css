@@ -5,9 +5,14 @@
 body {
     font-family: 'Manjari', sans-serif;
     padding-top: 70px;
+    overflow-x:hidden;
   
 }
 
+
+.navbar-masthead {
+    background-color:#000 ;
+}
 
 /*Form */
 

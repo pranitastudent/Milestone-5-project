@@ -12,6 +12,12 @@ from django.template.loader import get_template
 import datetime
 from .models import Post
 
+# Index Page
+
+def index(request):
+    """Return the index.html file"""
+    return render(request, 'index.html')
+
 
 # Logout View
 

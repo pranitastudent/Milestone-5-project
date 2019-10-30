@@ -1,6 +1,7 @@
 from django.conf.urls import url, include
-from accounts.views import logout, login, register, Contact, get_posts, post_detail, create_or_edit_post, delete_post
+from accounts.views import index, logout, login, register, Contact, get_posts, post_detail, create_or_edit_post, delete_post
 from accounts import url_reset
+
 
 
 
