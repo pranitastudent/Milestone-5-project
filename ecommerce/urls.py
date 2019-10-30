@@ -10,6 +10,7 @@ from products import urls as urls_products
 from products.views import all_products
 from cart import urls as urls_cart
 from django.views import static
+from search import urls as urls_search
 
 
 
@@ -17,10 +18,11 @@ from django.views import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url ('r^$', all_products, name= "index"),
+    url(r'^$', all_products, name= "index"),
     url(r'^accounts/', include(urls_accounts)),
     url(r'^products/', include(urls_products)),
     url(r'^cart/', include(urls_cart)),
+    url(r'^search/', include(urls_search)),
     url(r'^media/(?P<path>.*)$', serve, {'document_root':MEDIA_ROOT}),
   
     
