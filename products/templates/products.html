@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {% for product in products.object_list %}
-        <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
+    {% for product in products %}
+        <div class="col-xs-12 col-sm-6 col-md-6 display panel">
             <div class="panel-body">
                 <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ product.image }}')"></div>
 

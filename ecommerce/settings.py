@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['b477ad04a80c44a6ab37b07c2a4959f1.vfs.cloud9.us-east-1.amazonaws.com']
+ALLOWED_HOSTS = ['00719f8e0b00412f821e14250f22620f.vfs.cloud9.us-east-1.amazonaws.com']
 
 
 # Application definition
@@ -140,6 +140,9 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
+
+STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
+STRIPE_SECRET = os.getenv('STRIPE_SECRET')
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 
