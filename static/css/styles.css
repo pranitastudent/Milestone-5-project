@@ -117,18 +117,18 @@ caption p {
 
 /*Footer*/
 
-.main-footer {
-    margin-top: 40px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border-top: 1px solid #ededed;
-    background-color: #000;
-    bottom:0;
-    height:60px;
-    position:fixed;
-    width:100%;
+/*.main-footer {*/
+/*    margin-top: 40px;*/
+/*    padding-top: 20px;*/
+/*    padding-bottom: 20px;*/
+/*    border-top: 1px solid #ededed;*/
+/*    background-color: #000;*/
+/*    bottom:0;*/
+/*    height:60px;*/
+/*    position:fixed;*/
+/*    width:100%;*/
    
-}
+/*}*/
 
 .footer-p {
     color:#fff;
