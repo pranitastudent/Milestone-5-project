@@ -14,6 +14,8 @@ body {
 .main-heading {
     text-align: center;
     padding-right:5em;
+    margin: 0px 0px;
+    
 }
 
 
@@ -68,6 +70,19 @@ caption p {
     word-wrap: break-word;
 }
 
+
+/* Messaages */
+
+.messages {
+    text-align: center;
+    background-color:#ccffcc;
+    letter-spacing: 2px;
+    color: #000;
+    height:50px;
+    margin-bottom: 10px;
+    padding-top:10px;
+    
+}
 
 /*Panels*/
 
