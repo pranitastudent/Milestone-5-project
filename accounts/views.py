@@ -12,6 +12,7 @@ from django.template.loader import get_template
 import datetime
 from .models import Post
 
+
 # Index Page
 
 def index(request):
@@ -129,7 +130,7 @@ def Contact(request):
     
 # Feedback Form - The code below is adapated from the Code Institute Lectures on Blog Post
 
-# View All Feedback - even if not own
+# View All Feedback  Posts - all viewers to site
 
 def get_posts(request):
     """
@@ -143,7 +144,7 @@ def get_posts(request):
 
 # View Own Feedback and decide to post
 
-# Post Detail
+# View  Own Feedback Posts
 
 def post_detail(request, pk):
     """
@@ -152,41 +153,40 @@ def post_detail(request, pk):
     """
     
     post = get_object_or_404(Post, pk=pk)
-    post.views += 1
-    post.save()
+    if request.user.is_authenticated():
+       if post.user == request.user:
+          post.views += 1
+          post.save()
     return render(request, "feedbackdetail.html", {'post': post})
 
 
-# Add Creating and Editing/Deleting Feedback
+# Create Feedback Post
 
-@login_required
-def create_or_edit_post(request, pk=None):
-    """
-    Create a view that allows us to create
-    or edit a feedback post depending if the Post ID
-    is null or not
-    """
-    post = get_object_or_404(Post, pk=pk) if pk else None
-    if request.method == "POST":
-          form = FeedbackForm(request.POST, request.FILES, instance=post)
-          if form.is_valid():
-             post = form.save()
-          return redirect(post_detail, post.pk)
-    else:
-        form = FeedbackForm(instance=post)
-    return render(request, 'feedbackform.html', {'form': form})
+@login_required()
+def create_post(request):
+  if request.method == "POST":
+   form = FeedbackForm(request.POST)
+   if form.is_valid():
+      form.save()
+   return redirect(get_posts)
+  form = FeedbackForm()
+  return render(request, 'feedbackform.html', {'form':form})
+            
+# Edit Feedback Post   
+
+@login_required()
+def edit_post(request,pk):
+    post= get_object_or_404(Post, pk=pk)
+    form = FeedbackForm(request.POST or None, instance=post)
+    if form.is_valid():
+       form.save()
+       return redirect('get_posts')
+    return render(request, 'feedbackform.html', {'form':form}) 
     
-
-         
     
-    
-    
-# Delete Function
+# Delete Feedback Post
 
-
-# Code for delete_post adapted from Try Django 1.9 - 23 of 38 - Delete View - website in references
-
-@login_required
+@login_required()
 def delete_post(request, pk=None):
     
     """
@@ -194,12 +194,12 @@ def delete_post(request, pk=None):
     """
     post = get_object_or_404(Post, pk=pk)
     if request.user.is_authenticated():
-        
-       user = request.user
-       post.user = request.user
-       post.delete()
+       if post.user == request.user:
+          post.delete()
+    else:
+        return render(request,'404.html')
 
-    return redirect("get_posts")
+    return redirect("deletedfeedback.html")
     
-
+        
             

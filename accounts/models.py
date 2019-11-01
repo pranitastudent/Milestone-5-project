@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 
 class Post(models.Model):
     """
-    A single Blog post
+    Feedback Post
     """
     user = models.ForeignKey(User, default='1')
     title = models.CharField(max_length=200)

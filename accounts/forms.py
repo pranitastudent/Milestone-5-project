@@ -55,3 +55,4 @@ class FeedbackForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('title', 'feedback', 'rating')
+ 

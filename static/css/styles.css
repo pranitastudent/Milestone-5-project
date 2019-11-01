@@ -217,7 +217,7 @@ caption p {
 .username {
     font-size:1em;
     color:#fff;
-    padding-left:1em;
+    padding-top:1em;
 }
 
 /*Media Queries*/
@@ -272,11 +272,11 @@ caption p {
     .login{
     width:30%;
 }
-   .username {
-   padding:6em;
+   /*.username {*/
+   /*padding:6em;*/
        
        
-   }
+   /*}*/
  
     
     

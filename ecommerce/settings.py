@@ -39,8 +39,7 @@ ALLOWED_HOSTS = ['00719f8e0b00412f821e14250f22620f.vfs.cloud9.us-east-1.amazonaw
 # Application definition
 
 INSTALLED_APPS = [
-    'admin_view_permission',
-   'django.contrib.admin',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
