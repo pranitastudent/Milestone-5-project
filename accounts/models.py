@@ -12,7 +12,7 @@ class Post(models.Model):
     """
     user = models.ForeignKey(User, default='1')
     title = models.CharField(max_length=200)
-    feedback = models.TextField()
+    feedback = models.TextField(max_length=30)
     created_date = models.DateTimeField(auto_now_add=True)
     published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
     Rating_CHOICES = (

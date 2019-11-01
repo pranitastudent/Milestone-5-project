@@ -272,16 +272,21 @@ caption p {
     .login{
     width:30%;
 }
-   /*.username {*/
-   /*padding:6em;*/
-       
-       
-   /*}*/
- 
+   
+   .feedback {
+       font-size:1.5em;
+   }
+   
+   .feedback-form {
+       width:80%;
+   }
     
-    
+.feedback-container {
+min-height: 600px;
+}
 }
 
-
+    
+    
 
 
