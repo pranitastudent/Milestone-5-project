@@ -11,7 +11,6 @@ from django.core.mail import EmailMessage
 from django.template.loader import get_template
 import datetime
 from .models import Post
-import logging
 
 
 # Index Page
@@ -194,7 +193,7 @@ def delete_post(request, pk=None):
     """
     post = get_object_or_404(Post, pk=pk)
     if request.user.is_authenticated():
-       logging.warning("Value of post.user.id = " + request.user.id)
+      
        if post.user.id == request.user.id:
           instance = Post.objects.get(id=id)
           instance.delete()     
