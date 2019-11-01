@@ -20,8 +20,7 @@
     <!--JQuery for Bootstrap-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    {% block head_js %}
-    {% endblock head_js %}
+    {% block head_js %} {% endblock head_js %}
 
 </head>
 
@@ -39,12 +38,15 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/">Pranita's T-Shirt Shop</a>
+                <p><span class="boldtext text-center username">{{ user.get_username }}</span></p>
             </div>
 
             <div id="navbar" class="navbar-collapse collapse">
+                
                 <ul class="nav navbar-nav navbar-right links">
 
                     {% if user.is_authenticated %}
+                    
                     <li><a href="{% url 'logout' %}">Logout</a></li>
                     <li><a href="{% url 'new_post' %}">Add Feedback</a></li>
                     {% else %}
@@ -66,10 +68,10 @@
     <!--End of Navigation Bar-->
 
 
-    <h1 class="main-heading">{% block page_heading %}{% endblock %}</h1>
+    <h1 class="Top-heading">{% block page_heading %}{% endblock %}</h1>
 
     {% if messages %}
-    <div class = " container-fluid messages"><strong>
+    <div class=" container-fluid messages"><strong>
         {% for message in messages %} {{ message }} {% endfor %}
    </strong></div>
     {% endif %}
@@ -82,19 +84,24 @@
             <input type="text" name="q">
             <button type="submit" class="btn btn-primary search">Search</button>
         </form>
-   </div>
-   
-   
+    </div>
+
+
+    {% block content %}
+
+
+
+
+    {% endblock %}
+    
+    
     <!--Footer-->
 
-    <footer class ="main-footer">
-         <div class=" col-xs-12 col-md-12 col-sm-12">
-                <p class="footer-p text-center"> Pranita's T-Shirt Shop</p>
-         </div>
+    <footer class="main-footer">
+        <div class=" col-xs-12 col-md-12 col-sm-12">
+            <p class="footer-p text-center"> Pranita's T-Shirt Shop</p>
+        </div>
     </footer>
-   
-    {% block content %}{% endblock %}
-
 
 </body>
 

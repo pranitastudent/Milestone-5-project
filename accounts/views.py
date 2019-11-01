@@ -143,21 +143,19 @@ def get_posts(request):
 
 # View Own Feedback and decide to post
 
-@login_required
+# Post Detail
+
 def post_detail(request, pk):
     """
-    Create a view that returns a single
-    Post object based on the post ID (pk) and
-    render it to the 'feedbackdetail.html' template.
-    Or return a 404 error if the post is
-    not found
+    Create a View that returns single post object based on post Id.
+    Render to 'postdetail.html' Or return post error is post not found
     """
+    
     post = get_object_or_404(Post, pk=pk)
-    if request.user.is_authenticated():
-       user = request.user
-       post.views += 1
-       post.save()
+    post.views += 1
+    post.save()
     return render(request, "feedbackdetail.html", {'post': post})
+
 
 # Add Creating and Editing/Deleting Feedback
 
@@ -177,6 +175,10 @@ def create_or_edit_post(request, pk=None):
     else:
         form = FeedbackForm(instance=post)
     return render(request, 'feedbackform.html', {'form': form})
+    
+
+         
+    
     
     
 # Delete Function
