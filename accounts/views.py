@@ -163,11 +163,12 @@ def post_detail(request, pk):
 
 @login_required()
 def create_post(request):
-  if request.method == "POST":
-   form = FeedbackForm(request.POST)
-   if form.is_valid():
-      form.save()
-   return redirect(get_posts)
+  if current.user.id == current.user.id:    
+      if request.method == "POST":
+       form = FeedbackForm(request.POST)
+       if form.is_valid():
+          form.save()
+          return redirect(get_posts)
   form = FeedbackForm()
   return render(request, 'feedbackform.html', {'form':form})
             

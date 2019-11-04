@@ -10,7 +10,11 @@ class Post(models.Model):
     """
     Feedback Post
     """
-    user = models.ForeignKey(User, default='1')
+    user = models.ForeignKey(User, default='1') 
+    user = models.OneToOneField(User)
+    user = models.ForeignKey(User, unique=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    # what should default be?
     title = models.CharField(max_length=200)
     feedback = models.TextField(max_length=30)
     created_date = models.DateTimeField(auto_now_add=True)
