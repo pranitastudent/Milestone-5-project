@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 class Feedback(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
-    title = models.CharField(max_length=100)
+    product_title = models.CharField(max_length=100)
     feedback = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
     published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
