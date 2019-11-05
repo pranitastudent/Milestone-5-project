@@ -12,6 +12,7 @@ from cart import urls as urls_cart
 from django.views import static
 from search import urls as urls_search
 from checkout import urls as urls_checkout
+from feedback import urls as urls_feedback
 
 
 
@@ -26,6 +27,7 @@ urlpatterns = [
     url(r'^media/(?P<path>.*)$', serve, {'document_root':MEDIA_ROOT}),
     url(r'^products/', include(urls_products)),
     url(r'^checkout/', include(urls_checkout)),
+    url(r'^feedback/', include(urls_feedback)),
   
     
 ]
