@@ -9,6 +9,17 @@
                 <h3>{{ product.name }}</h3>
                 <p class="product-description">{{ product.description }}</p>
                 <p>{{ product.price }}</p>
+                <!--<form method = "post" action= {% url 'filters' product.id %}-->
+                <!--<select multiple name="size">-->
+                <!--    <option value = "Small">Small</option>-->
+                <!--    <option value = "Medium">Medium</option>-->
+                <!--    <option value = "Large">Large</option>-->
+                <!--    <option value = "XLarge">XLarge</option>-->
+                <!--    <option value = "XXLarge">XXLarge</option>-->
+                <!--</select>-->
+                <!--<button type= "submit">Submit</button>-->
+                
+                <!--</form>-->
 
                 <form method="post" action="{% url 'add_to_cart' product.id %}">
                     {% csrf_token %}

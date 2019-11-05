@@ -10,7 +10,8 @@ class Post(models.Model):
     """
     Feedback Post
     """
-    
+    id = '1'
+    user = models.ForeignKey(id, default='') 
     # user = models.OneToOneField(User)
     # user = models.ForeignKey(User, unique=True)
     # user = models.OneToOneField(User, on_delete=models.CASCADE)

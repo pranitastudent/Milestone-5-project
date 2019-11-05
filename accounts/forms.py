@@ -49,6 +49,7 @@ class ContactForm(forms.Form):
     contact_email = forms.EmailField(required=True)
     content = forms.CharField(required = True)
     
+# Feedback Form
 
 class FeedbackForm(forms.ModelForm):
 

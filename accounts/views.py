@@ -11,6 +11,7 @@ from django.core.mail import EmailMessage
 from django.template.loader import get_template
 import datetime
 from .models import Post
+# import logging
 
 
 # Index Page
@@ -142,10 +143,11 @@ def get_posts(request):
         ).order_by('-published_date')
     return render(request, "feedback.html", {'posts': posts})
 
+
 # View Own Feedback and decide to post
 
-# View  Own Feedback Posts
 
+# View  Own Feedback Posts
 def post_detail(request, pk):
     """
     Create a View that returns single post object based on post Id.
@@ -153,29 +155,29 @@ def post_detail(request, pk):
     """
     
     post = get_object_or_404(Post, pk=pk)
-    if request.user.is_authenticated():
-       post.views += 1
-       post.save()
+    # if request.user.is_authenticated():
+    post.views += 1
+    post.save()
     return render(request, "feedbackdetail.html", {'post': post})
-
-
+    
 # Create Feedback Post
 
-@login_required()
+
 def create_post(request):
-  if current.user.id == current.user.id:    
-      if request.method == "POST":
-       form = FeedbackForm(request.POST)
-       if form.is_valid():
-          form.save()
-          return redirect(get_posts)
+     
+  if request.method == "POST":
+   form = FeedbackForm(request.POST)
+   if form.is_valid():
+      form.save()
+   return redirect(get_posts)
   form = FeedbackForm()
   return render(request, 'feedbackform.html', {'form':form})
             
-# Edit Feedback Post   
+# Edit Feedback Post  
 
-@login_required()
+
 def edit_post(request,pk):
+   
     post= get_object_or_404(Post, pk=pk)
     form = FeedbackForm(request.POST or None, instance=post)
     if form.is_valid():
@@ -186,22 +188,19 @@ def edit_post(request,pk):
     
 # Delete Feedback Post
 
-@login_required()
+
 def delete_post(request, pk=None):
     
     """
     Create a view that allows the selected user to delete a post_detail
     """
     post = get_object_or_404(Post, pk=pk)
-    if request.user.is_authenticated():
-      
-       if post.user.id == request.user.id:
-          instance = Post.objects.get(id=id)
-          instance.delete()     
-    else:
-        return render(request,'404.html')
 
-    return redirect("deletedfeedback.html")
-    
-        
-            
+    if post.user == request.user:
+        if request.user.is_authenticated():
+
+            user = request.user
+            post.user = request.user
+            post.delete()
+
+    return redirect("get_posts")
