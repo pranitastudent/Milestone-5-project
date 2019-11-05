@@ -40,7 +40,7 @@ def add_post(request):
         form = FeedbackForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author = request.author
+            post.user = request.user
             post.save()
             return redirect('get_posts', pk=post.pk)
     else:
