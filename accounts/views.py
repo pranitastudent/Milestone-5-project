@@ -6,11 +6,11 @@ from django.http import HttpResponseRedirect
 from django.contrib import auth, messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required 
-from .forms import UserLoginForm,  UserRegistrationForm, ContactForm, FeedbackForm
+from .forms import UserLoginForm,  UserRegistrationForm, ContactForm
 from django.core.mail import EmailMessage
 from django.template.loader import get_template
 import datetime
-from .models import Post
+
 # import logging
 
 
@@ -144,63 +144,3 @@ def get_posts(request):
     return render(request, "feedback.html", {'posts': posts})
 
 
-# View Own Feedback and decide to post
-
-
-# View  Own Feedback Posts
-def post_detail(request, pk):
-    """
-    Create a View that returns single post object based on post Id.
-    Render to 'postdetail.html' Or return post error is post not found
-    """
-    
-    post = get_object_or_404(Post, pk=pk)
-    # if request.user.is_authenticated():
-    post.views += 1
-    post.save()
-    return render(request, "feedbackdetail.html", {'post': post})
-    
-# Create Feedback Post
-
-
-def create_post(request):
-     
-  if request.method == "POST":
-   form = FeedbackForm(request.POST)
-   if form.is_valid():
-      form.save()
-   return redirect(get_posts)
-  form = FeedbackForm()
-  return render(request, 'feedbackform.html', {'form':form})
-            
-# Edit Feedback Post  
-
-
-def edit_post(request,pk):
-   
-    post= get_object_or_404(Post, pk=pk)
-    form = FeedbackForm(request.POST or None, instance=post)
-    if form.is_valid():
-       form.save()
-       return redirect('get_posts')
-    return render(request, 'feedbackform.html', {'form':form}) 
-    
-    
-# Delete Feedback Post
-
-
-def delete_post(request, pk=None):
-    
-    """
-    Create a view that allows the selected user to delete a post_detail
-    """
-    post = get_object_or_404(Post, pk=pk)
-
-    if post.user == request.user:
-        if request.user.is_authenticated():
-
-            user = request.user
-            post.user = request.user
-            post.delete()
-
-    return redirect("get_posts")
