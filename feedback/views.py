@@ -29,6 +29,9 @@ def get_posts(request):
 
 @login_required()
 
+
+# post changed to form???
+
 def add_post(request):
     """
     This View allows logged in users
@@ -39,7 +42,7 @@ def add_post(request):
         form = FeedbackForm(request.POST)
         if form.is_valid():
             form = form.save(commit=False)
-            form.user = request.user
+            form.author = request.user
             form.save()
             return redirect('post_detail', pk=form.pk)
     else:
