@@ -16,4 +16,4 @@ class Feedback(models.Model):
     views = models.IntegerField(default=0)
     
     def __str__(self):
-        return self.title
+        return self.product_title

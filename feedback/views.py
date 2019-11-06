@@ -8,8 +8,6 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .forms import FeedbackForm
 
 
-
-
 # Create your views here.
 
 # Feedback Views- Adapted from Code Institute Blog Post lectures
@@ -40,16 +38,34 @@ def add_post(request):
     if request.method=="POST":
         form = FeedbackForm(request.POST)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.user = request.user
-            post.save()
-            return redirect('get_posts', pk=post.pk)
+            form = form.save(commit=False)
+            form.user = request.user
+            form.save()
+            return redirect('post_detail', pk=form.pk)
     else:
         form=FeedbackForm()
     return render(request, "feedbackform.html", {"form":form})
     
+
+#  Post Detail- single view
+
+@login_required()
+
+def post_detail(request, pk):
+    """
+    This view allows logged in users
+    to see there own feedback post about
+    the product
+    """
+    post = get_object_or_404(Feedback, pk=pk)
+    post.save()
+    return render(request, "feedbackdetail.html", {"post":post})
+    
+
     
 #  Edit Post - Only Logged in Users and only there own
+
+@login_required()
 
 def edit_post(request,pk):
     """
@@ -73,6 +89,8 @@ def edit_post(request,pk):
     
     
 # Delete Post - Only Logged in Users and only there own
+
+@login_required()
 
 def delete_post(request,pk):
     """
