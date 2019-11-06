@@ -8,7 +8,7 @@ from django.conf import settings
 class Feedback(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     product_title = models.CharField(max_length=100, null=True)
-    feedback = models.TextField(null=True)
+    user_feedback = models.TextField(null=True)
     created_date = models.DateTimeField(auto_now_add=True, null=True)
     published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
     RATING_CHOICES = ((1, 'Poor'), (2, 'Average'), (3, 'Good'), (4, 'Very Good'), (5, 'Excellent'))

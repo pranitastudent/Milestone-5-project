@@ -9,7 +9,7 @@
                 <h3>{{ post.product_title }}</h3>
                 <div class="row">
                     <div class="col-xs-9">
-                        <p>{{ post.feedback|truncatewords:20 }}</p>
+                        <p>{{ post.user_feedback|truncatewords:20 }}</p>
                         <p><span class="boldtext">Published on:</span> {{ post.published_date }} </p>
                         <p><span class="boldtext">Views:</span> {{post.views}}</p>
                         <p><span class="boldtext">Rating:</span> {{post.rating}}</p>

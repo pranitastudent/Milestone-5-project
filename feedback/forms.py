@@ -8,4 +8,4 @@ class FeedbackForm(forms.ModelForm):
     """
     class Meta:
         model = Feedback
-        fields = ('product_title', 'feedback', 'rating' )
+        fields = ('product_title', 'user_feedback', 'rating' )
