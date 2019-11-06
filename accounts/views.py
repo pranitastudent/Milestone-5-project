@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import UserLoginForm,  UserRegistrationForm, ContactForm
 from django.core.mail import EmailMessage
 from django.template.loader import get_template
+from feedback.models import Feedback
 import datetime
 
 # import logging
@@ -129,18 +130,15 @@ def Contact(request):
         return render_to_response('success.html')
     return render(request, 'contact.html', {'form':Contact_Form })   
     
-# Feedback Form - The code below is adapated from the Code Institute Lectures on Blog Post
+# Profile for User
 
-# View All Feedback  Posts - all viewers to site
-
-def get_posts(request):
+def profile(request):
     """
-    Create a view that will return a list
-    of Posts that were published prior to 'now'
-    and render them to the 'feedback.html' template
+    A view which shows the profile
+    page of user (author and user defined)
+    
     """
-    posts = Post.objects.filter(published_date__lte=timezone.now()
-        ).order_by('-published_date')
-    return render(request, "feedback.html", {'posts': posts})
-
+    user = User.objects.get(username=request.user.username)
+    feedback = Feedback.objects.filter(author=user)
+    return render(request, 'profile.html', {'profile':user, 'feedback':feedback})
 
