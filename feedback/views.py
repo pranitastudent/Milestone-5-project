@@ -30,7 +30,7 @@ def get_posts(request):
 @login_required()
 
 
-# post changed to form???
+#  Tutor Tim Nelson added with changes to Lines 44-46
 
 def add_post(request):
     """
@@ -41,9 +41,9 @@ def add_post(request):
     if request.method=="POST":
         form = FeedbackForm(request.POST)
         if form.is_valid():
-            form = form.save(commit=False)
-            form.author = request.user
-            form.save()
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
             return redirect('post_detail', pk=form.pk)
     else:
         form=FeedbackForm()
@@ -76,15 +76,15 @@ def edit_post(request,pk):
     to edit there own
     """
     post=get_object_or_404(Feedback, pk=pk)
-    if request.user == post.user:
+    if request.user == post.author:
         if request.method == "POST":
             form = FeedbackForm(request.POST, instance=post)
             if form.is_valid():
                 form.save()
-                return redirect('get_posts', pk=post.pk)
+                return redirect(get_posts)
         else:
             form = FeedbackForm(instance=post)
-        return render(request,"feedabckform.html", {"form":form})   
+        return render(request,"feedbackform.html", {"form":form})   
     else:
         messages.info(request, "You don't have permission to edit this feedback")
         form = FeedbackForm()
@@ -101,7 +101,7 @@ def delete_post(request,pk):
     own post
     """
     post=get_object_or_404(Feedback, pk=pk)
-    if request.user == post.user:
+    if request.user == post.author:
         post.delete()
         messages.success(request, "Your Feedback Post has been deleted")
     else:
