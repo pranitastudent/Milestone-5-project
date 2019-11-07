@@ -10,16 +10,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pranita's T-shirt Shop</title>
 
-    <!--Bootstrap and Fontawesome CSS-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static 'font-awesome/css/all.css' %}">
+    <!--Bootstrap CSS-->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" />
+   
+   <!--Fontawesone CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css" type="text/css" />
 
     <!--My Own CSS -->
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <!--JQuery for Bootstrap-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
     {% block head_js %} {% endblock head_js %}
 
 </head>
@@ -27,45 +31,54 @@
 <body>
 
     <!--Navigation Bar-->
-
-    <nav class="navbar navbar-masthead navbar-default navbar-fixed-top">
-        <div class="nav-container">
-            <div class="navbar-header">
-                <button type="button-toggle" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+     <nav class="navbar navbar-masthead navbar-default navbar-fixed-top">
+         <div class="row">
+        <div class="container-fluid">
+            <div class = "col-xs-12 col-sm-12 col-md-12">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">Pranita's T-Shirt Shop</a>
-              <div class="col-xs-1 col-md-1 col-sm-1 text-center username"><br>
-                <p><span class="boldtext text-center ">{{ user.get_username }}</span></p>
-                </div>
                 
+                  
+                <a class="navbar-brand" href="/">Pranita's T-shirt Shop</a><br>
+            
             </div>
-
             <div id="navbar" class="navbar-collapse collapse">
-                
-                <ul class="nav navbar-nav navbar-right links">
-
+                <ul class="nav navbar-nav navbar-right">
+                   
+                        
                     {% if user.is_authenticated %}
-                    
                     <li><a href="{% url 'logout' %}">Logout</a></li>
                     <li><a href="{% url 'add_post' %}">Add Feedback</a></li>
-                    {% else %}
+                    
+                   {% else %}
                     <li><a href="{% url 'login' %}">Login</a></li>
                     <li><a href="{% url 'register' %}">Register</a></li>
                     {% endif %}
-                    <li><a href="{% url 'view_cart' %}"><span class "glyphicon glyphicon-shopping-cart">Cart</span>
-                    {% if product_count > 0 %}
-                    <label class="badge badge-warning">{{ product_count }}</label>
-                    {% endif %}
-                    </a></li>
+                    
+                    <li>
+                        <a href="{% url 'view_cart' %}">
+                            Cart
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            {% if product_count > 0 %}
+                            <label class="badge badge-warning">{{ product_count }}</label>
+                            {% endif %}
+                        </a>
+                    </li>
+                    
                     <li><a href="{% url 'contact' %}">Contact</a></li>
                     <li><a href="{% url 'get_posts' %}">Feedback</a></li>
-
+       
                 </ul>
             </div>
+        </div>
+        </div>
+        </div>
+          <span class= "username">{{user.username}}</span>
     </nav>
 
     <!--End of Navigation Bar-->

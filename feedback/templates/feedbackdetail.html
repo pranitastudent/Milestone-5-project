@@ -1,19 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="row">
-            <div class="col-sm-10 col-md-9">
-             <h3>{{ post.title }}</h3>
-            <div class="row">
-                <div class="col-xs-9">
-                    <p>{{ post.product_title }}</p>
-                    <p><span class="boldtext">Published on:</span> {{ post.published_date }} </p>
-                    <p><span class="boldtext">Feedback:</span> {{ post.feedback }}</p>
-                    <p><span class="boldtext">Views:</span> {{post.views}}</p>
-                    <p><span class="boldtext">Rating:</span>{{post.rating}}</p>
-                    <a href="{% url 'get_posts' %}" class="btn btn-default">Back to Feedback</a>
-                    <a href="{% url 'edit_post' post.id %}" class="btn btn-default">Edit Post</a>
-                    <a href="{% url 'delete_post' post.id %}" class="btn btn-default">Delete</a>
-                    <hr>
+<div class="container detail">
+        <div class="row">
+        <div class="col-xs-12 col-sm-auto col-md-auto">
+                    <p class="product-title">{{ post.product_title }}</p>
+                    <p class ="product-paragraph"><span class="boldtext">Published on:</span> {{ post.published_date }} </p>
+                    <p class= "product-paragraph"><span class="boldtext">Feedback:</span> {{ post.feedback }}</p>
+                    <p class = "product-paragraph"><span class="boldtext">Views:</span> {{post.views}}</p>
+                    <p class= "product-paragraph"><span class="boldtext">Rating:</span>{{post.rating}}</p>
+                    <a href="{% url 'get_posts' %}" class="btn btn-feedback"><span class= "alter">Back to Feedback</span></a>
+                    <a href="{% url 'edit_post' post.id %}" class="btn btn-edit"><span class="alter">Edit Post</span></a>
+                    <a href="{% url 'delete_post' post.id %}" class="btn btn-delete"><span class = "alter">Delete</span></a>
+                    
+                </div>
                 </div>
             </div>
         </div>

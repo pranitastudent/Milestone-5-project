@@ -3,12 +3,17 @@
 /*Body */
 
 body {
-    font-family: 'Manjari', sans-serif;
+    font: 'Manjari', sans-serif;
     padding-top: 100px;
     overflow-x:hidden;
-  
+    
 }
 
+
+
+.links {
+    font-family: 'Manjari', sans-serif;
+}
 
 .product-title {
     font-size:2em;
@@ -26,12 +31,15 @@ body {
 }
 
 
-.nav-container,
-.navbar-header
-{
-    background-color:#000 ;
+.navbar-default{
+    background-color: #000;
+    color:#fff;
 }
 
+nav .navbar-nav li a,
+.navbar-brand {
+    color:#fff !important;
+}
 /*Form */
 
 form {
@@ -138,12 +146,8 @@ caption p {
 }
 
 .display {
-    position:absolute;
-    text-align: center;
-    top:50px;
-    margin-bottom: 100px;
-   
-}
+   text-align: center;
+  }
 
 input[name="q"]{
   width: 70%;
@@ -202,12 +206,20 @@ input[name="q"]{
 }
 
 
-.btn-search {
+.btn-search,
+.btn-send{
     height:3em;
     background-color:#4d79ff;
     color:#fff;
     letter-spacing: 1.5px;
    
+}
+
+.btn-send {
+    height:3em;
+    background-color:#00e600;
+    color:#fff;
+    letter-spacing: 1.5px;
 }
 
 .button.btn.btn-primary.search {
@@ -217,11 +229,7 @@ input[name="q"]{
 .login{
     width:20%;
 }
-/*Links*/
 
-.links {
-    padding-right:3em;
-}
 
 .btn-delete{
     background-color: #ff0000;
@@ -235,9 +243,22 @@ input[name="q"]{
     
 }
 
+.btn-feedback {
+    background-color:  #4da6ff;
+    border-color: #000;
+}
+
+.detail{
+   width:400px;    
+   margin: 0 auto;   
+
+   
+}
 .alter {
     color:#fff;
 }
+
+
 /*Product*/
 
 .product {
@@ -255,12 +276,9 @@ input[name="q"]{
     font-weight: 100;
 }
 
-.username {
-    font-size:1em;
+.username{
+    padding-left:2em;
     color:#fff;
-    padding-top:1em;
-    text-align: center;
-  
 }
 
 
@@ -274,6 +292,13 @@ hr {
 }
 
 /*Feedback */
+
+.feedback {
+    display: block;
+    
+}
+
+
 
 /*Media Queries*/
 
@@ -334,10 +359,15 @@ hr {
    
    .feedback-form {
        width:80%;
+       min-height: 100%
    }
     
 .feedback-container {
       min-height: 600px;
+ }
+ 
+ .main-form {
+     padding-bottom:90px;
  }
  
 }
@@ -355,13 +385,6 @@ hr {
     margin-right:60px;
 }
 
-   .display {
-       position:absolute;
-       top:90px;
-       margin-bottom:10px;
-   }
-   
-   
    
 }
     

@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% load bootstrap_tags %} {% block page_title %} Login {% endblock %}
 
-<main class= "form-container">
-    <div class="row">
+<div class="row">
+        <div class="container-fluid">
         <div class = "col-md-6 col-xs-6"></div>
     {% block content %} {% block heading %}
     <h1 class="main-heading">Login</h1> {% endblock %}
@@ -11,7 +11,7 @@
         <br><br>
         <p class="password">If you have forgotten your password please<a href="{% url 'password_reset' %}"> Reset Password</a></p>
     </form>
-    </main>
+    </div>
 </div>
 </div>
     

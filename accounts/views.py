@@ -132,13 +132,13 @@ def Contact(request):
     
 # Profile for User
 
-def profile(request):
-    """
-    A view which shows the profile
-    page of user (author and user defined)
+# def profile(request):
+#     """
+#     A view which shows the profile
+#     page of user (author and user defined)
     
-    """
-    user = User.objects.get(username=request.user.username)
-    feedback = Feedback.objects.filter(author=user)
-    return render(request, 'profile.html', {'profile':user, 'feedback':feedback})
+#     """
+#     user = User.objects.get(username=request.user.username)
+#     feedback = Feedback.objects.filter(author=user)
+#     return render(request, 'profile.html', {'profile':user, 'feedback':feedback})
 

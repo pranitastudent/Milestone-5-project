@@ -5,9 +5,9 @@
 <!--Feedback Form-->
 
 
-<div class="container">
-    <div class="feedback-container">
-    <h1 class="feedback text-center">Please Give Us Some Feedback ..</h1>
+<div class="container-fluid feedback">
+    <div class="row">
+    <div class = "col-xs-12 col-md-12 col-sm-12"><h2 class="text-center"><strong>Please Give Us Some Feedback ..<strong></h2></div><br>
   
     <form method="POST" enctype="multipart/form-data" class="feedback-form">
         {% csrf_token %}
@@ -25,10 +25,9 @@
  <!--End of code taken-->
     
   </p>    
-        <button type="submit" class="btn btn-info">Submit</button>
+        <button type="submit" class="btn btn-send">Submit</button>
     </form>
-    
-    </div>
+     </div>
     </div>
     
 
