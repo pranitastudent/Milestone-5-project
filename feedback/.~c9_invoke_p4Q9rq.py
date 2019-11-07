@@ -101,7 +101,7 @@ def delete_post(request,pk):
     post=get_object_or_404(Feedback, pk=pk)
     if request.user == post.author:
         post.delete()
-        return redirect(get_posts)
+        return render(request,"deletedfeedback.html")
     else:
         messages.info(request, "You don't have permission to delete this feedback")
     return ('feedback.html')    

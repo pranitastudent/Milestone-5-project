@@ -13,8 +13,9 @@
                         <p><span class="boldtext">Published on:</span> {{ post.published_date }} </p>
                         <p><span class="boldtext">Views:</span> {{post.views}}</p>
                         <p><span class="boldtext">Rating:</span> {{post.rating}}</p>
-    {% if request.user == post.user %}    
+    {% if request.user == post.author %}    
                       <a href="{% url 'edit_post' post.id %}" class="btn btn-default"><span>Edit</span></a>
+                      <a href="{% url 'delete_post' post.id %}" class="btn btn-default"><span>Delete</span></a>
                      
     {% endif %}                  
                     </div>
