@@ -12,6 +12,19 @@
     <form method="POST" enctype="multipart/form-data" class="feedback-form">
         {% csrf_token %}
         {{ form | as_bootstrap }}
+   
+   
+  <!--Code taken from  Simple Django Web Application Tutorial by Roberto Garcia-->
+  <p>
+    {% for rate in RATING_CHOICES %}
+      <input type="radio" name="rating" id="rating{{ forloop.counter }}" value="{{ rate.0 }}" />
+      <label for="choice{{ forloop.counter }}">{{ rate.1 }} star{{rate.0|pluralize }}</label>
+      <br/>
+    {% endfor %}  
+ 
+ <!--End of code taken-->
+    
+  </p>    
         <button type="submit" class="btn btn-info">Submit</button>
     </form>
     

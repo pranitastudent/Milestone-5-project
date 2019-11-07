@@ -9,6 +9,13 @@ body {
   
 }
 
+
+.product-title {
+    font-size:2em;
+    color:#000;
+    font-family: 'Manjari', sans-serif;;
+}
+
 /*Headings*/
 
 .top-heading {
@@ -20,7 +27,8 @@ body {
 
 
 .nav-container,
-.navbar-header {
+.navbar-header
+{
     background-color:#000 ;
 }
 
@@ -40,6 +48,7 @@ form {
 .password {
     font-size:1em;
     padding-top:1em;
+    margin-right:130px;
 }
 
 .top-form {
@@ -129,8 +138,16 @@ caption p {
 }
 
 .display {
+    position:absolute;
     text-align: center;
+    top:50px;
+    margin-bottom: 100px;
    
+}
+
+input[name="q"]{
+  width: 70%;
+  display: inline-block; 
 }
 
 
@@ -185,9 +202,12 @@ caption p {
 }
 
 
-.search {
+.btn-search {
     height:3em;
-    background-color: #000;
+    background-color:#4d79ff;
+    color:#fff;
+    letter-spacing: 1.5px;
+   
 }
 
 .button.btn.btn-primary.search {
@@ -203,6 +223,21 @@ caption p {
     padding-right:3em;
 }
 
+.btn-delete{
+    background-color: #ff0000;
+    border-color: #000;
+}
+
+
+.btn-edit {
+    background-color:  #00e673;
+    border-color: #000;
+    
+}
+
+.alter {
+    color:#fff;
+}
 /*Product*/
 
 .product {
@@ -214,11 +249,31 @@ caption p {
     margin: 0 auto;
 }
 
+.product-paragraph {
+    font-size: 1em;
+    color:#000;
+    font-weight: 100;
+}
+
 .username {
     font-size:1em;
     color:#fff;
     padding-top:1em;
+    text-align: center;
+  
 }
+
+
+
+/*Horizontal Rule*/
+
+hr {
+      display: block;
+      border: 1px #d9d9d9 solid;
+      width:68%;
+}
+
+/*Feedback */
 
 /*Media Queries*/
 
@@ -282,10 +337,33 @@ caption p {
    }
     
 .feedback-container {
-min-height: 600px;
-}
+      min-height: 600px;
+ }
+ 
 }
 
+/*Horizontal rule Media Query    */
+
+@media(max-width:500px){
+    hr {
+      display: block;
+      border: 1px #808080 solid;
+      width:100%;
+    }
+    
+    .password {
+    margin-right:60px;
+}
+
+   .display {
+       position:absolute;
+       top:90px;
+       margin-bottom:10px;
+   }
+   
+   
+   
+}
     
     
 

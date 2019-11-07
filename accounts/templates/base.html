@@ -38,7 +38,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/">Pranita's T-Shirt Shop</a>
-              <div class="col-xs-1 col-md-1 col-sm-1 username">
+              <div class="col-xs-1 col-md-1 col-sm-1 text-center username"><br>
                 <p><span class="boldtext text-center ">{{ user.get_username }}</span></p>
                 </div>
                 
@@ -71,7 +71,7 @@
     <!--End of Navigation Bar-->
 
 
-    <h1 class="Top-heading">{% block page_heading %}{% endblock %}</h1>
+    <h1 class="top-heading">{% block page_heading %}{% endblock %}</h1>
 
     {% if messages %}
     <div class=" container-fluid messages"><strong>
@@ -80,14 +80,17 @@
     {% endif %}
 
     <!--Search Box-->
-
-
-    <div class="display">
+    <div class="container-fluid">
+        <div class="row">
+    <div class=" col-xs-12 col-md-12 col-sm-12 display">
         <form action="{% url 'search' %}" method="GET">
-            <input type="text" name="q">
-            <button type="submit" class="btn btn-primary search">Search</button>
+            <input type="text" name="q">&nbsp;
+            <button type="submit" class="btn btn-search"><strong>Search</strong></button>
         </form>
     </div>
+    </div>
+    </div>
+    <br><br><br>
 
 
     {% block content %}
