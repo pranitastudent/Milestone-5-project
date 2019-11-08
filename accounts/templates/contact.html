@@ -6,11 +6,12 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <h1 class = "text-center">Contact Us</h1>
+            <h1 class = "text-center contact-heading"><strong>Contact Us</strong></h1>
             <form method="post">
                 {% csrf_token %}
                 {{ form| as_bootstrap }}
-                <button type= "submit">Submit</button>
+                <br>
+                <button type= "submit" class= "btn btn-contact">Submit</button>
             </form>
         </div>
      </div>

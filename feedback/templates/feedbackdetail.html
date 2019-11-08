@@ -6,7 +6,6 @@
                     <p class="product-title">{{ post.product_title }}</p>
                     <p class ="product-paragraph"><span class="boldtext">Published on:</span> {{ post.published_date }} </p>
                     <p class= "product-paragraph"><span class="boldtext">Feedback:</span> {{ post.feedback }}</p>
-                    <p class = "product-paragraph"><span class="boldtext">Views:</span> {{post.views}}</p>
                     <p class= "product-paragraph"><span class="boldtext">Rating:</span>{{post.rating}}</p>
                     <a href="{% url 'get_posts' %}" class="btn btn-feedback"><span class= "alter">Back to Feedback</span></a>
                     <a href="{% url 'edit_post' post.id %}" class="btn btn-edit"><span class="alter">Edit Post</span></a>

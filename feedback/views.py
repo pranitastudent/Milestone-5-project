@@ -6,6 +6,7 @@ from django.utils import timezone
 from .models import Feedback
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import FeedbackForm
+from django.core.paginator import Paginator,EmptyPage,InvalidPage
 
 
 # Create your views here.
@@ -19,8 +20,21 @@ def get_posts(request):
     This View shows all feedback
     for all visitors to site
     """
-    posts = Feedback.objects.filter(published_date__lte=timezone.now()
+    posts_list = Feedback.objects.filter(published_date__lte=timezone.now()
     ).order_by('-published_date')
+    
+    paginator = Paginator(posts_list,3)
+    
+    try:
+        page = int(request.GET.get('page', '1'))
+    except:
+        page = 1
+        
+    try:
+        posts = paginator.page(page)
+    except(EmptyPage, InvalidPage):
+        posts = paginator.page(paginator.num_pages)
+        
     
     return render(request, "feedback.html", {'posts': posts})
 

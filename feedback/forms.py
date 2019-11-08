@@ -9,3 +9,8 @@ class FeedbackForm(forms.ModelForm):
     class Meta:
         model = Feedback
         fields = ('product_title', 'user_feedback', 'rating' )
+        widgets= {
+            'user_feedback':forms.Textarea(attrs={
+                "rows":3
+            })
+        }
