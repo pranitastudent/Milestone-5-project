@@ -16,22 +16,22 @@
     <!--Fontawesone CSS-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css?family=Farro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css" type="text/css" />
 
     <!--My Own CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <!--JQuery for Bootstrap-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     {% block head_js %} {% endblock head_js %}
 
 </head>
 
 <body>
-
-    <!--Navigation Bar-->
-    <nav class="navbar navbar-masthead navbar-default navbar-fixed-top">
+  
+      <nav class="navbar navbar-default navbar-fixed-top">
         <div class="row">
             <div class="container-fluid">
                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -42,9 +42,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-
-
-                        <a class="navbar-brand" href="/">Pranita's T-shirt Shop</a><br>
+                    <a class="navbar-brand links" href="/">Pranita's T-shirt Shop</a><br>
 
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">
@@ -52,16 +50,16 @@
 
 
                             {% if user.is_authenticated %}
-                            <li ><a href="{% url 'logout' %}">Logout</a></li>
-                            <li><a href="{% url 'add_post' %}">Add Feedback</a></li>
+                            <li class= "nav-item"><a class="links" href="{% url 'logout' %}">Logout</a></li>
+                            <li class = "nav-item"><a class= "links" href="{% url 'add_post' %}">Add Feedback</a></li>
 
                             {% else %}
-                            <li class="active"><a href="{% url 'login' %}">Login</a></li>
-                            <li><a href="{% url 'register' %}">Register</a></li>
+                            <li class= "nav-item"><a class ="links" href="{% url 'login' %}">Login</a></li>
+                            <li class="nav-item"><a class="links" href="{% url 'register' %}">Register</a></li>
                             {% endif %}
 
-                            <li>
-                                <a href="{% url 'view_cart' %}">
+                            <li class = "nav-item">
+                                <a class="links" href="{% url 'view_cart' %}">
                             Cart
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                             {% if product_count > 0 %}
@@ -70,15 +68,15 @@
                         </a>
                             </li>
 
-                            <li><a href="{% url 'contact' %}">Contact</a></li>
-                            <li><a href="{% url 'get_posts' %}">Feedback</a></li>
+                            <li class= "nav-item"><a class= "links" href="{% url 'contact' %}">Contact</a></li>
+                            <li class= "nav-item"><a class= "links" href="{% url 'get_posts' %}">Feedback</a></li>
 
                         </ul>
-                    </div>
+                 
                 </div>
             </div>
         </div>
-        <span class="username">{{user.username}}</span>
+        <span class="username">User:{{user.username}}</span>
     </nav>
 
     <!--End of Navigation Bar-->
@@ -93,7 +91,7 @@
     {% endif %}
 
     <!--Search Box-->
-    <div class="container-fluid">
+      <div class="container-fluid home">
         <div class="row">
             <div class=" col-xs-12 col-md-12 col-sm-12 display">
                 <form action="{% url 'search' %}" method="GET">
@@ -103,9 +101,12 @@
             </div>
         </div>
     </div>
-    <br><br><br> {% block content %} {% endblock %}
-
-    <div class="container-fluid pagination-box">
+    <br><br><br>
+    
+    {% block content %} {% endblock %}
+    
+    
+    <div class="container pagination-box">
         <div class="row">
             <div class="col-xs-12 col-md-12 col-sm-12 pagination">
                 {% if posts.has_previous %}
@@ -120,22 +121,19 @@
             </div>
         </div>
     </div>
-
-
+    </div>
+    
     <!--Footer-->
 
-    <footer class="main-footer">
-        <div class="container-fluid ">
+    <footer class="main-footer container-fluid">
             <div class="row">
                 <div class=" col-xs-12 col-sm-12 col-md-12 text-center">
                     <p class="footer-p">© Copyright Pranita's T-Shirt Shop</p>
                     <span class="icon-github"><a href="https://pages.github.com/" target="_blank"><i class="fab fa-github"></i></a></span>
                 </div>
-            </div>
-        </div>
+           </div>
     </footer>
-
-
+   
 </body>
 
 </html>

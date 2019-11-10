@@ -6,35 +6,8 @@ html,
 body {
     font: 'Manjari', sans-serif;
     overflow-x: hidden;
-    margin: 0;
-    padding: 0;
-}
+    }
 
-
-.nav-item a
-{
-   
-    color:#fff;
-    text-decoration: none;
-}
-
-
-.nav a {
-    text-decoration: none;
-}
-
-.nav a:hover {
-    color: #0047b3;
-    transition: all 0.20s ease-in-out;
-    -moz-transition: all 0.20s ease-in-out;
-    -webkit-transition: all 0.20s ease-in-out;
-    -o-transition: all 0.20s ease-in-out;
-}
-
-.nav-set {
-    color:#fff;
-    
-}
 
 .product-title {
     font-size:2em;
@@ -69,10 +42,40 @@ body {
 }
 
 
+
+
 .pagination a:hover:not(.active) {
     color:#000;
    
 
+}
+
+.navbar .navbar-brand {
+    background-color: #000;
+    color:#fff;
+}
+
+
+
+
+.navbar {
+    background-color: #000;
+   
+}
+
+.navbar-default .navbar-nav .links {
+    color:#fff;
+    font:'Manjari', sans-serif;
+    font-size:1.2em;
+}
+
+.navbar-default .nav-item:hover .links  {
+    color: yellow;
+}
+
+
+a:hover {
+    color:red!important;
 }
 
 /*Headings*/
@@ -86,17 +89,6 @@ body {
 
 .contact-heading {
     font-size:2.5em;
-}
-
-
-.navbar-default{
-    background-color: #000;
-    color:#fff;
-}
-
-nav .navbar-nav li a,
-.navbar-brand {
-    color:#fff !important;
 }
 
 
@@ -222,14 +214,13 @@ input[name="q"]{
 .main-footer {
     border-top: 1px solid #ededed;
     background-color: #000;
-    width:100%;
-    margin-top: auto;
+    margin:0;
+    padding:0;
     bottom:0;
     position:fixed;
-    
-    
-    
-   
+    width:100%;
+  
+
 }
 
 .footer-p {
@@ -356,10 +347,9 @@ input[name="q"]{
 }
 
 .username{
-    padding-left:1.75em;
+    padding-left:3em;
     color:#fff;
 }
-
 
 
 /*Horizontal Rule*/
@@ -379,7 +369,18 @@ hr {
 
 
 .pagination-box {
-    padding-top:190px;
+    padding-bottom:10px;
+}
+
+
+
+.product {
+    width:100%;
+    height:50%;
+}
+
+.product-container {
+   height:90%;
 }
 
 
