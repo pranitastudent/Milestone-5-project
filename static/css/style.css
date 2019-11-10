@@ -9,11 +9,37 @@ body {
     }
 
 
+/*Titles and Headings*/
+
 .product-title {
     font-size:2em;
     color:#1a1aff;
     font-family: 'Manjari', sans-serif;;
 }
+
+
+.top-heading {
+    text-align: center;
+    padding-right:5em;
+    margin: 0px 0px;
+    
+}
+
+.contact-heading {
+    font-size:2.5em;
+}
+
+
+.main-heading {
+    text-align:center;
+}
+
+.password {
+  text-align:center;
+}
+
+
+/*Pagination*/
 
 .pagination {
     display: inline;
@@ -32,7 +58,6 @@ body {
 
 }
 
-
 .pagination a.active {
     background-color:#ffe6e6;
     color:#000;
@@ -41,7 +66,9 @@ body {
   
 }
 
-
+.pagination-box {
+    padding-bottom:10px;
+}
 
 
 .pagination a:hover:not(.active) {
@@ -49,6 +76,9 @@ body {
    
 
 }
+
+
+/*Navigation Bar*/
 
 .navbar .navbar-brand {
     background-color: #000;
@@ -77,20 +107,6 @@ body {
 a:hover {
     color:red!important;
 }
-
-/*Headings*/
-
-.top-heading {
-    text-align: center;
-    padding-right:5em;
-    margin: 0px 0px;
-    
-}
-
-.contact-heading {
-    font-size:2.5em;
-}
-
 
 
 /*Form */
@@ -130,7 +146,9 @@ margin-bottom:50px;
 width:70%;
 }
 
+
 /* Badge */
+
 
 .badge {
     
@@ -235,10 +253,6 @@ input[name="q"]{
      padding:90px;
 }
 
-
-
-
-
 .icon-bar {
     background-color: #fff;
 }
@@ -247,15 +261,6 @@ input[name="q"]{
     padding-top: 20px;
 }
 
-/*Headings*/
-
-.main-heading {
-    text-align:center;
-}
-
-.password {
-  text-align:center;
-}
 
 /*Buttons*/
 
@@ -346,6 +351,18 @@ input[name="q"]{
     font-weight:100;
 }
 
+
+
+.product {
+    width:100%;
+    height:50%;
+}
+
+.product-container {
+   height:90%;
+}
+
+
 .username{
     padding-left:3em;
     color:#fff;
@@ -365,22 +382,6 @@ hr {
 .feedback {
     display: block;
     
-}
-
-
-.pagination-box {
-    padding-bottom:10px;
-}
-
-
-
-.product {
-    width:100%;
-    height:50%;
-}
-
-.product-container {
-   height:90%;
 }
 
 
