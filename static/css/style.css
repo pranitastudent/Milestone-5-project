@@ -33,10 +33,11 @@ body {
 .main-heading {
     text-align:center;
     font-size:4em;
-    font-weight:800;
-    padding-right:2em;
     color:#1a1aff;
     font-family: 'Manjari', sans-serif;
+    padding-right:1em;
+    font-weight:800;
+    
 }
 
 .password {
@@ -378,6 +379,13 @@ input[name="q"]{
 }
 
 
+/*Contact Form*/
+
+#contact_name {
+    padding-bottom:10px;
+}
+
+
 /*Horizontal Rule*/
 
 hr {
@@ -425,7 +433,7 @@ hr {
      font-size:1.5em;       
     }
     .form-group {
-        margin-bottom: 2px;
+        margin-bottom: 20px;
     }
     
     .footer-p {
@@ -480,18 +488,20 @@ hr {
     margin-right:60px;
 }
 
-   
 }
 
-/*Heading Media Queries*/
+
+/*Headings*/
 
 @media(max-width:500px){
     .main-heading {
-        padding-bottom:2em;
+        padding-bottom:1em;
+    }
+    
+    .contact-heading{
+        padding-bottom:1em;
     }
 }
-
-
 
 
 

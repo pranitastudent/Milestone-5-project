@@ -130,15 +130,3 @@ def Contact(request):
         return render_to_response('success.html')
     return render(request, 'contact.html', {'form':Contact_Form })   
     
-# Profile for User
-
-# def profile(request):
-#     """
-#     A view which shows the profile
-#     page of user (author and user defined)
-    
-#     """
-#     user = User.objects.get(username=request.user.username)
-#     feedback = Feedback.objects.filter(author=user)
-#     return render(request, 'profile.html', {'profile':user, 'feedback':feedback})
-

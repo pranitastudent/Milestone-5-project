@@ -47,6 +47,7 @@ class UserRegistrationForm(UserCreationForm):
 class ContactForm(forms.Form):
     contact_name = forms.CharField(required=True, widget=forms.Textarea(attrs={
         "placeholder":" Please enter your name",
+        "rows":1,
     }))
     contact_email = forms.EmailField(required=True, widget=forms.Textarea(attrs={
         "placeholder":"Please enter your email address",
