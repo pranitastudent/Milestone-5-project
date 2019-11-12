@@ -32,7 +32,9 @@ body {
 
 .main-heading {
     text-align:center;
-    font-size:2em;
+    font-size:4em;
+    font-weight:800;
+    padding-right:2em;
     color:#1a1aff;
     font-family: 'Manjari', sans-serif;
 }
@@ -479,6 +481,14 @@ hr {
 }
 
    
+}
+
+/*Heading Media Queries*/
+
+@media(max-width:500px){
+    .main-heading {
+        padding-bottom:2em;
+    }
 }
 
 
