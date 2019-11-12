@@ -50,6 +50,7 @@ class ContactForm(forms.Form):
     }))
     contact_email = forms.EmailField(required=True, widget=forms.Textarea(attrs={
         "placeholder":"Please enter your email address",
+        "rows":1,
     }))
     message = forms.CharField(required = True, widget=forms.Textarea(attrs={
         "rows":5,
