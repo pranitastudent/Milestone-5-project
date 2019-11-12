@@ -7,7 +7,7 @@
                         <h3 class="product-title">{{ post.product_title }}</h3>
                         <p class = "product-paragraph">{{ post.user_feedback|truncatewords:20 }}</p>
                         <p class = "product-paragraph"><span class="boldtext">Published on:</span> {{ post.published_date }} </p>
-                        <p class = "product-rating"><span class="boldtext product-rating">Rating:</span> {{ post.rating }} star{{ post.rating|pluralize }} </p>
+                        <p class = "product-rating">Rating:&nbsp;{{ post.rating }} star{{ post.rating|pluralize }} </p>
     {% if request.user == post.author %}    
                       <a href="{% url 'edit_post' post.id %}" class="btn btn-edit"><span class= "alter">Edit</span></a>
                        &nbsp;&nbsp;&nbsp;

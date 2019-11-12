@@ -28,6 +28,8 @@ urlpatterns = [
     url(r'^products/', include(urls_products)),
     url(r'^checkout/', include(urls_checkout)),
     url(r'^feedback/', include(urls_feedback)),
+ 
+   
   
     
 ]

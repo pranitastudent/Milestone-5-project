@@ -203,13 +203,6 @@ caption p {
 
 /*Panels*/
 
-.row.row-flex {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 30px;
-    height:100px;
-}
-
 
 .panel-default {
     border-color: transparent;
@@ -237,6 +230,7 @@ input[name="q"]{
 }
 
 
+
 /*Footer*/
 
 .main-footer {
@@ -259,8 +253,13 @@ input[name="q"]{
 
 .icon-github {
      font-size:2.5em;
-     
+     color:#fff;
      padding:90px;
+}
+
+
+.icon-github:hover {
+    color:#ff0000;
 }
 
 .icon-bar {
@@ -337,6 +336,13 @@ input[name="q"]{
     color:#fff;
 }
 
+/*Checkout*/
+
+.checkout {
+    text-align:center;
+    
+}
+
 
 /*Product*/
 
@@ -355,6 +361,24 @@ input[name="q"]{
     font-weight: 100;
 }
 
+
+.addition {
+    width:100%;
+}
+
+.total {
+    padding-top:2em;
+    padding-left:3.5em;
+}
+
+.check-box {
+    padding-left:5em;
+}
+
+.price {
+    padding-left:3.5em;
+}
+
 .product-rating {
     font-size:1em;
     color: #e62e00;
@@ -369,7 +393,7 @@ input[name="q"]{
 }
 
 .product-container {
-   height:90%;
+   height:100%;
 }
 
 
@@ -500,6 +524,14 @@ hr {
     
     .contact-heading{
         padding-bottom:1em;
+    }
+    
+    .checkout {
+        height:127vh;
+    }
+    
+    .total {
+        padding-top:0em;
     }
 }
 

@@ -1,6 +1,12 @@
-Django==1.11.25
+boto3==1.9.237
+dj-database-url==0.5.0
+Django==1.11.26
 django-admin-view-permission==1.9
 django-forms-bootstrap==3.1.0
+django-js-asset==1.2.2
+Pillow==6.2.1
 pytz==2019.3
+pyxdg==0.25
 s3transfer==0.2.1
+stars-rating==0.1
 stripe==2.38.0

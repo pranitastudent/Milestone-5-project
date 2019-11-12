@@ -13,6 +13,7 @@ class Feedback(models.Model):
     published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
     RATING_CHOICES = ((1, 'Poor'), (2, 'Average'), (3, 'Good'), (4, 'Very Good'), (5, 'Excellent'))
     rating = models.PositiveSmallIntegerField('Rating (stars)', blank=False, default=3, choices=RATING_CHOICES, null=True)
+    
   
     def __str__(self):
         return self.product_title
