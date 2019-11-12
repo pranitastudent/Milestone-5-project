@@ -45,9 +45,14 @@ class UserRegistrationForm(UserCreationForm):
 # Contact Form- Code adapted from (Django-2.2 Part-7 Django Contact Form with SMTP Email Backed Tutorial | By Creative web) 
 
 class ContactForm(forms.Form):
-    contact_name = forms.CharField(required=True)
-    contact_email = forms.EmailField(required=True)
-    content = forms.CharField(required = True, widget=forms.Textarea(attrs={
-        "rows":5
+    contact_name = forms.CharField(required=True, widget=forms.Textarea(attrs={
+        "placeholder":" Please enter your name",
+    }))
+    contact_email = forms.EmailField(required=True, widget=forms.Textarea(attrs={
+        "placeholder":"Please enter your email address",
+    }))
+    message = forms.CharField(required = True, widget=forms.Textarea(attrs={
+        "rows":5,
+        "placeholder":"Please enter your message",
     }))
     

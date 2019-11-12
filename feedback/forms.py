@@ -11,6 +11,9 @@ class FeedbackForm(forms.ModelForm):
         fields = ('product_title', 'user_feedback', 'rating' )
         widgets= {
             'user_feedback':forms.Textarea(attrs={
-                "rows":3
-            })
-        }
+                "rows":5,
+                "placeholder":"Please add your feedback here"
+                })
+            }
+            
+        

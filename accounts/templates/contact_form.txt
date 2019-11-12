@@ -6,5 +6,5 @@ Email:
 
 Content:
 
-{{ contact_content }}
+{{ contact_message }}
 

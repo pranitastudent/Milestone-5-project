@@ -6,7 +6,7 @@ html,
 body {
     font: 'Manjari', sans-serif;
     overflow-x: hidden;
-    }
+       }
 
 
 /*Titles and Headings*/
@@ -14,7 +14,7 @@ body {
 .product-title {
     font-size:2em;
     color:#1a1aff;
-    font-family: 'Manjari', sans-serif;;
+    font-family: 'Manjari', sans-serif;
 }
 
 
@@ -32,6 +32,9 @@ body {
 
 .main-heading {
     text-align:center;
+    font-size:2em;
+    color:#1a1aff;
+    font-family: 'Manjari', sans-serif;
 }
 
 .password {
@@ -43,8 +46,8 @@ body {
 
 .pagination {
     display: inline;
-     margin: 4% 40%; 
-     padding-bottom:80px;
+     margin: 1% 40%; 
+     padding-bottom: 180px!important;
      
      }
 
@@ -67,8 +70,8 @@ body {
 }
 
 .pagination-box {
-    padding-bottom:10px;
-}
+    margin-bottom:3em!important;
+ }
 
 
 .pagination a:hover:not(.active) {
@@ -86,7 +89,9 @@ body {
 }
 
 
-
+.item-feedback {
+  padding-right:2em;   
+}
 
 .navbar {
     background-color: #000;
@@ -96,18 +101,20 @@ body {
 .navbar-default .navbar-nav .links {
     color:#fff;
     font:'Manjari', sans-serif;
-    font-size:1.2em;
+    font-size:1.4em;
+    font-weight:300;
 }
 
 .navbar-default .nav-item:hover .links  {
-    color: yellow;
+    color: #ff0000;
 }
 
-
-a:hover {
-    color:red!important;
-}
-
+.navbar .navbar-brand:hover {
+    color:#ff0000;
+    font-size:1.4em;
+    font-weight:300;
+    font:'Manjari', sans-serif;
+} 
 
 /*Form */
 
@@ -382,6 +389,10 @@ hr {
 .feedback {
     display: block;
     
+}
+
+.feedback-box {
+   
 }
 
 
