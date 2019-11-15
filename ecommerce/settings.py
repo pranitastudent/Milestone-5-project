@@ -33,7 +33,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['00719f8e0b00412f821e14250f22620f.vfs.cloud9.us-east-1.amazonaws.com']
+ALLOWED_HOSTS = ['00719f8e0b00412f821e14250f22620f.vfs.cloud9.us-east-1.amazonaws.com', 'pranita-ecommerce.herokuapp.com']
 
 
 # Application definition
