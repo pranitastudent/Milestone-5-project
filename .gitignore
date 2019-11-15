@@ -6,3 +6,4 @@ __pycache__/
 *.png
 static/
 media
+env.pyc
