@@ -4,7 +4,7 @@
     {% for product in products %}
     <div class="container-fluid">
         <div class="row">
-        <div class="col-xs-12 col-md-4 col-sm-4  panel panel-default product-container">
+        <div class="col-xs-12 col-md-4 col-sm-4  product-container">
             <div class="panel-body">
                 <div class="product img-responsive" style="background-image: url('{{ MEDIA_URL }}{{ product.image }}')"></div>
                 <h3>{{ product.name }}</h3>

@@ -44,6 +44,10 @@ body {
   text-align:center;
 }
 
+.payment-detail {
+    padding-left:1em;
+}
+
 
 /*Pagination*/
 
@@ -201,6 +205,9 @@ caption p {
     
 }
 
+
+
+
 /*Panels*/
 
 
@@ -285,6 +292,10 @@ input[name="q"]{
     color:#fff;
     letter-spacing: 1.5px;
    
+}
+
+.btn-success {
+    vertical-align:top;
 }
 
 .btn-send {
@@ -397,6 +408,7 @@ input[name="q"]{
 }
 
 
+
 .username{
     padding-left:3em;
     color:#fff;
@@ -469,13 +481,7 @@ hr {
         padding-bottom:1em;
         
     }
-    
-    .btn {
-       margin-top:5px;
-       
-      
-    }
-    
+ 
     .login{
     width:30%;
 }
@@ -535,7 +541,11 @@ hr {
     }
 }
 
-
+@media(max-width:500px){
+    .panel-body {
+    height:100%;
+}
+}
 
 
 
