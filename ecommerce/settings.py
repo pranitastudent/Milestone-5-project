@@ -12,8 +12,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
-# if os.path.exists('env.py'):
-#     import env
+if os.path.exists('env.py'):
+    import env
 
 
 import dj_database_url    
@@ -91,7 +91,7 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 
-if "DATABASES_URL" in os.environ:
+if "DATABASE_URL" in os.environ:
     DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 else:
     print("Database URL not found. Default to using sqlite")
